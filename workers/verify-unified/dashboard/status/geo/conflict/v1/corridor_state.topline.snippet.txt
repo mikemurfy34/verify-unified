@@ -1,0 +1,10 @@
+Sovereign Intelligence Pilot - Corridor Topline (Static Stub)
+
+This is a static topline summary for the pilot environment.
+
+- Use the Geopolitical Risk Board to see calibrated 12-month conflict and instability
+  for each corridor (including alert / hedge / reroute actions).
+- Use the Ocean & Climate Divergence view to see ENSO / reef divergence and climate
+  stress for the same corridors.
+- For real deployments, this snippet can be auto-generated from the latest
+  corridor_state.latest.json asset and wired into notification or reporting flows.

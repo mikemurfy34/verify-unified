@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "issuer": "codex-v5",
+    "purpose": "e2e-verify",
+    "ts": "2025-11-11T04:32:39.193Z"
+  },
+  "refs": [],
+  "sig": {
+    "alg": "Ed25519-SHA256-RFC8785",
+    "publicKey": "AdkTPDeqj6BjB2aTTKlaGOiJbFl5L5bRoOKErhSYPEE=",
+    "sig": "Wbjip4T8ykq9zhP5kOg5P4LKwc6PJpy4Bat3vWEpyQebJ88pn85onSIJhst98r2FTmnlN1XoOiQNOopYfosBAQ==",
+    "hash": "46jlZiJxKdy-Lj3UJYsbJdMqIvP4PZxURegOyTZ1ahc"
+  },
+  "extra": true
+}

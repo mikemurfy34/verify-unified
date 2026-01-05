@@ -1,0 +1,9 @@
+# Ensure wrangler.toml contains (example):
+#
+# [vars]
+# ALLOW_ORIGINS = "https://yourdomain.com,https://verify-unified.jolly-bread-ff7e.workers.dev"
+# MAX_BODY_BYTES = "65536"
+# MAX_BODY_DEPTH = "8"
+#
+# For dev (IPv4) one-shot:
+# npx wrangler dev --var ALLOW_ORIGINS="http://127.0.0.1:8787" --var MAX_BODY_BYTES=65536 --var MAX_BODY_DEPTH=8

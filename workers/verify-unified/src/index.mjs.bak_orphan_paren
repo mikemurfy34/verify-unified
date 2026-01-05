@@ -1,0 +1,307 @@
+﻿import nacl from "tweetnacl";
+
+/* ---------- utilities ---------- */
+
+const isPojo = x => x && typeof x === "object" && !Array.isArray(x);
+
+function canonicalize(v){
+  if (v===null) return "null";
+  const t = typeof v;
+  if (t==="number"){ if(!Number.isFinite(v)) throw new Error("non-finite"); return JSON.stringify(v); }
+  if (t==="boolean") return v?"true":"false";
+  if (t==="string") return JSON.stringify(v);
+  if (Array.isArray(v)) return "["+v.map(canonicalize).join(",")+"]";
+  if (isPojo(v)){ const keys=Object.keys(v).sort(); return "{"+keys.map(k=>JSON.stringify(k)+":"+canonicalize(v[k])).join(",")+"}"; }
+  throw new Error("unsupported type");
+}
+
+function normB64(s){ s=String(s).replace(/-/g,"+").replace(/_/g,"/"); const pad=s.length%4; if(pad) s+="=".repeat(4-pad); return s; }
+function u8FromB64(s){ const bin=atob(normB64(s)); const out=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) out[i]=bin.charCodeAt(i); return out; }
+function b64FromBytes(bytes){ let s=""; for (let i=0;i<bytes.length;i++) s+=String.fromCharCode(bytes[i]); return btoa(s); }
+
+async function sha256Bytes(str){
+  const data = new TextEncoder().encode(str);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return new Uint8Array(digest);
+}
+
+function json(obj, status=200, extraHeaders={}){
+  return new Response(JSON.stringify(obj, null, 2), {
+    status,
+    headers: { "content-type":"application/json; charset=utf-8", ...extraHeaders }
+  });
+}
+
+function withCors(resp){
+  const h = new Headers(resp.headers ?? {});
+  if (!h.has("access-control-allow-origin")) {
+    h.set("access-control-allow-origin","*");
+    h.set("access-control-allow-methods","GET, POST, OPTIONS");
+    h.set("access-control-allow-headers","content-type, x-api-key");
+  }
+  return new Response(resp.body, { status: resp.status ?? 200, headers: h });
+}
+
+/* ---------- minimal schema ---------- */
+
+function validateUnifiedShape(data){
+  const errors=[];
+  if (!data || typeof data!=="object" || Array.isArray(data)) {
+    errors.push({instancePath:"", message:"must be object"}); return {ok:false, errors};
+  }
+  for (const k of ["meta","refs","sig"]) if (!(k in data))
+    errors.push({instancePath:"", message: 'must have required property ' + k});
+  if ("meta" in data && (typeof data.meta!=="object" || Array.isArray(data.meta)))
+    errors.push({instancePath:"/meta", message:"must be object"});
+  if ("refs" in data && !Array.isArray(data.refs))
+    errors.push({instancePath:"/refs", message:"must be array"});
+  if ("sig" in data && (typeof data.sig!=="object" || Array.isArray(data.sig)))
+    errors.push({instancePath:"/sig", message:"must be object"});
+  for (const k of Object.keys(data)) if (!["meta","refs","sig"].includes(k))
+    errors.push({instancePath:"", message:"must NOT have additional properties", additionalProperty:k});
+  return {ok: errors.length===0, errors};
+}
+function makeUnifiedValidator(){ const fn=(d)=>{ const r=validateUnifiedShape(d); fn.errors=r.errors; return r.ok; }; return fn; }
+const validateUnified = makeUnifiedValidator();
+
+/* ---------- /verify (with per-step timings) ---------- */
+
+async function handleVerify(request){
+  const steps = {}; const t = (name, v) => { steps[name] = (steps[name] ?? 0) + v; };
+
+  // parse
+  let t0 = performance.now();
+  let body;
+  try { body = await request.json(); }
+  catch { return withCors(json({ ok:false, error:"invalid-json" }, 400)); }
+  t("parse", performance.now() - t0);
+
+  // schema
+  t0 = performance.now();
+  if (!validateUnified(body)) {
+    t("schema", performance.now() - t0);
+    return withCors(json({ ok:false, error:"schema", details: validateUnified.errors }, 422, { "x-step-timings": encodeSteps(steps) }));
+  }
+  t("schema", performance.now() - t0);
+
+  // hash + verify
+  t0 = performance.now();
+  const { sig } = body;
+  if (!sig || sig.alg !== "Ed25519-SHA256-RFC8785") {
+    t("precheck", performance.now() - t0);
+    return withCors(json({ ok:false, error:"unsupported-alg" }, 400, { "x-step-timings": encodeSteps(steps) }));
+  }
+  t("precheck", performance.now() - t0);
+
+  try {
+    // canon
+    t0 = performance.now();
+    const covered = { meta: body.meta, refs: body.refs };
+    const canon = canonicalize(covered);
+    t("canon", performance.now() - t0);
+
+    // sha256
+    t0 = performance.now();
+    const digest = await sha256Bytes(canon);
+    t("sha256", performance.now() - t0);
+
+    // hash check
+    t0 = performance.now();
+    if (typeof sig.hash === "string") {
+      const want = normB64(sig.hash);
+      const got  = normB64(b64FromBytes(digest));
+      if (want !== got) {
+        t("hashcheck", performance.now() - t0);
+        return withCors(json({ ok:false, error:"hash-mismatch" }, 400, { "x-step-timings": encodeSteps(steps) }));
+      }
+    }
+    t("hashcheck", performance.now() - t0);
+
+    // ed25519 verify
+    t0 = performance.now();
+    const pub = u8FromB64(sig.pubkey);
+    const signature = u8FromB64(sig.signature);
+    if (pub.length !== 32 || signature.length !== 64) {
+      t("preverify", performance.now() - t0);
+      return withCors(json({ ok:false, error:"bad-key-or-signature-length" }, 400, { "x-step-timings": encodeSteps(steps) }));
+    }
+    const ok = nacl.sign.detached.verify(digest, signature, pub);
+    t("verify", performance.now() - t0);
+
+    return withCors(json({ ok, alg: sig.alg }, 200, { "x-step-timings": encodeSteps(steps) }));
+  } catch (e) {
+    return withCors(json({ ok:false, error:String(e?.message ?? e) }, 500, { "x-step-timings": encodeSteps(steps) }));
+  }
+}
+
+function encodeSteps(steps){
+  const parts = [];
+  for (const kv of Object.entries(steps)) {
+    const k = kv[0];
+    const v = Number(kv[1]);
+    parts.push(k + ";dur=" + (isFinite(v) ? v : 0).toFixed(3));
+  }
+  return parts.join(",");
+}
+
+/* ---------- router with timing + request-id + logs ---------- */
+);
+  }
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+ if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2
+    throw new Error('invalid base64 alphabet in ' + label);
+  }
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+ if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2
+    throw new Error('invalid base64 alphabet in ' + label);
+  }
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+function stripInvisible(s) {
+  return String(s)
+    .replace(/\uFEFF/g, '')
+    .replace(/[\u200B-\u200D\u2060]/g, '')
+    .replace(/\s+/g, '');
+}
+function toBase64(s) {
+  let t = String(s).replace(/-/g, '+').replace(/_/g, '/');
+  const pad = t.length % 4;
+  if (pad) t += '='.repeat(4 - pad);
+  return t;
+}
+function b64IsValid(b64) {
+  if (typeof b64 !== 'string') return false;
+  const n = b64.length;
+  if (n === 0 || (n % 4) !== 0) return false;
+  const isAlpha = c => (
+    (c >= 'A' && c <= 'Z') ||
+    (c >= 'a' && c <= 'z') ||
+    (c >= '0' && c <= '9') ||
+    c === '+' || c === '/'
+  );
+  const coreLen = n - Math.min(2, n);
+  for (let i = 0; i < coreLen; i++) { const c = b64[i]; if (!isAlpha(c)) return false; }
+  for (let i = coreLen; i < n; i++) { const c = b64[i]; if (c !== '=' && !isAlpha(c)) return false; }
+  const firstEq = b64.indexOf('=');
+  if (firstEq !== -1) {
+    for (let i = firstEq; i < n; i++) if (b64[i] !== '=') return false;
+    if ((n - firstEq) > 2) return false;
+  }
+  return true;
+}
+function b64ToBytesSafe(label, s) {
+  const cleaned = stripInvisible(s);
+  const b64 = toBase64(cleaned);
+  if (!b64IsValid(b64)) throw new Error('invalid base64 alphabet in ' + label);
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+export default {
+  async fetch(request, env, ctx){
+    const totalStartHi = performance.now();
+    const totalStartWall = Date.now();
+    const reqId = crypto.randomUUID();
+    const url = new URL(request.url);
+    let resp;
+
+    try {
+      if (request.method === "OPTIONS") {
+        resp = new Response("", { status: 204 });
+      } else if (url.pathname === "/health") {
+        resp = json({ ok: true, ts: new Date().toISOString() });
+      } else if (url.pathname === "/verify" && request.method === "POST") {
+        resp = await handleVerify(request);
+      } else {
+        resp = json({ ok:false, error:"not-found" }, 404);
+      }
+    } catch (e) {
+      resp = json({ ok:false, route:"*", error:String(e?.message ?? e), stack:e?.stack }, 500);
+    }
+
+    // CORS
+    resp = withCors(resp);
+
+    // timings
+    const totalMs = Math.max(0, performance.now() - totalStartHi);
+    const wallMs = Math.max(0, Date.now() - totalStartWall);
+
+    const h = new Headers(resp.headers ?? {});
+    h.set("x-request-id", reqId);
+    // Keep multi-metric: total (hi-res) + wall
+    const stepFrag = h.get("x-step-timings"); // from handler, if present
+    const timingParts = ['total;dur=' + totalMs.toFixed(3), 'wall;dur=' + wallMs.toFixed(3)];
+    if (stepFrag) timingParts.push(stepFrag);
+    h.set("server-timing", timingParts.join(","));
+    // Parallel debug headers (useful if a proxy touches Server-Timing)
+    h.set("x-total-ms", totalMs.toFixed(3));
+    h.set("x-wall-ms", wallMs.toFixed(3));
+
+    const finalResp = new Response(resp.body, { status: resp.status ?? 200, headers: h });
+
+    // Structured access log
+    try {
+      console.log(JSON.stringify({
+        evt: "access",
+        reqId,
+        method: request.method,
+        path: url.pathname,
+        status: finalResp.status,
+        ms: totalMs,
+        wall: wallMs
+      }));
+    } catch {}
+
+    return finalResp;
+  }
+if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2
+    throw new Error('invalid base64 alphabet in ' + label);
+  }
+  try {
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  } catch (e) {
+    console.error('atob failed for ' + label, e?.message, { len: b64.length, head: b64.slice(0,16) });
+    throw e;
+  }
+ if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2 if (!/^[A-Za-z0-9+/]+={0,2
+    throw new Error('invalid base64 alphabet in ' + label);
+  }
+  try {
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  } catch (e) {
+    console.error('atob failed for ' + label, e?.message, { len: b64.length, head: b64.slice(0,16) });
+    throw e;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

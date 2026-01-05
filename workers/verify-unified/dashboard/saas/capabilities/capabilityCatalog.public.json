@@ -1,0 +1,360 @@
+{
+  "artifact": "capability-catalog",
+  "version": "v1",
+  "ts": "2025-11-12T05:03:16.252Z",
+  "capability_count": 24,
+  "capabilities": [
+    {
+      "id": "llm-core",
+      "family": "ai",
+      "summary": "Foundation model inference, batching, routing",
+      "parity_targets": [
+        "openai",
+        "aws",
+        "microsoft",
+        "google",
+        "anthropic"
+      ],
+      "kpi_goals": {
+        "latency_p95_ms": 50,
+        "proof_verification_rate": 1
+      },
+      "module": "services/llm-core",
+      "status": "in-progress"
+    },
+    {
+      "id": "function-calling",
+      "family": "ai",
+      "summary": "Deterministic tool use & json schema I/O",
+      "parity_targets": [
+        "openai",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "doc_task_success_pct": 0.98
+      },
+      "module": "services/function-calling",
+      "status": "planned"
+    },
+    {
+      "id": "multimodal-vision",
+      "family": "ai",
+      "summary": "Image/video understanding + grounding",
+      "parity_targets": [
+        "openai",
+        "google"
+      ],
+      "kpi_goals": {
+        "explainability_trust_score": 0.98
+      },
+      "module": "services/multimodal-vision",
+      "status": "planned"
+    },
+    {
+      "id": "speech-text",
+      "family": "ai",
+      "summary": "ASR/TTS duplex at edge and cloud",
+      "parity_targets": [
+        "openai",
+        "google",
+        "microsoft",
+        "aws"
+      ],
+      "kpi_goals": {
+        "latency_p95_ms": 150
+      },
+      "module": "services/speech-text",
+      "status": "planned"
+    },
+    {
+      "id": "embeddings",
+      "family": "ai",
+      "summary": "Dense/sparse vectors + hybrid indexes",
+      "parity_targets": [
+        "openai",
+        "aws",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "schema_fusion_success_pct": 0.99
+      },
+      "module": "services/embeddings",
+      "status": "planned"
+    },
+    {
+      "id": "fine-tuning",
+      "family": "ai",
+      "summary": "Supervised+LoRA with eval gates",
+      "parity_targets": [
+        "openai",
+        "aws",
+        "microsoft",
+        "google"
+      ],
+      "kpi_goals": {
+        "proof_verification_rate": 1
+      },
+      "module": "services/fine-tuning",
+      "status": "planned"
+    },
+    {
+      "id": "evals",
+      "family": "ai",
+      "summary": "Deterministic evals, golden sets, telemetry loops",
+      "parity_targets": [
+        "openai"
+      ],
+      "kpi_goals": {
+        "false_positive_rate": 0.01
+      },
+      "module": "services/evals",
+      "status": "in-progress"
+    },
+    {
+      "id": "moderation-safety",
+      "family": "safety",
+      "summary": "Policy engine + classifiers + proofs",
+      "parity_targets": [
+        "openai",
+        "microsoft",
+        "google"
+      ],
+      "kpi_goals": {
+        "classified_chain_compliance": 1
+      },
+      "module": "services/moderation-safety",
+      "status": "planned"
+    },
+    {
+      "id": "agents-runtime",
+      "family": "aiops",
+      "summary": "Multi-agent plans, guarantees, rollback",
+      "parity_targets": [
+        "openai",
+        "palantir"
+      ],
+      "kpi_goals": {
+        "operator_loop_time_s": 5
+      },
+      "module": "services/agents-runtime",
+      "status": "planned"
+    },
+    {
+      "id": "rag-fabric",
+      "family": "data",
+      "summary": "Retrieval orchestration, memory, caching, guardrails",
+      "parity_targets": [
+        "openai",
+        "palantir",
+        "aws",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "lineage_coverage_pct": 1
+      },
+      "module": "services/rag-fabric",
+      "status": "in-progress"
+    },
+    {
+      "id": "data-fabric-ontology",
+      "family": "data",
+      "summary": "Ontology, MDM, graph joins, purpose-binding",
+      "parity_targets": [
+        "palantir",
+        "oracle",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "pii_purpose_binding": 1
+      },
+      "module": "services/data-fabric-ontology",
+      "status": "planned"
+    },
+    {
+      "id": "lineage-governance",
+      "family": "data",
+      "summary": "End-to-end lineage, attestations, receipts",
+      "parity_targets": [
+        "palantir",
+        "oracle"
+      ],
+      "kpi_goals": {
+        "lineage_coverage_pct": 1
+      },
+      "module": "services/lineage-governance",
+      "status": "planned"
+    },
+    {
+      "id": "event-streaming",
+      "family": "infra",
+      "summary": "Global topic bus (edge↔cloud) with SIGINT adapters",
+      "parity_targets": [
+        "aws",
+        "microsoft",
+        "google"
+      ],
+      "kpi_goals": {
+        "ingest_throughput_gbps": 100
+      },
+      "module": "services/event-streaming",
+      "status": "planned"
+    },
+    {
+      "id": "decision-simulation",
+      "family": "ops",
+      "summary": "What-if, digital twins, policy impact models",
+      "parity_targets": [
+        "palantir"
+      ],
+      "kpi_goals": {
+        "what_if_scenario_depth": 5
+      },
+      "module": "services/decision-simulation",
+      "status": "in-progress"
+    },
+    {
+      "id": "sensor-fusion",
+      "family": "defense",
+      "summary": "Multi-sensor tracks, truth merge, latency budgeted",
+      "parity_targets": [
+        "anduril"
+      ],
+      "kpi_goals": {
+        "kill_chain_latency_ms": 200,
+        "sensor_to_shooter_traceability": 1
+      },
+      "module": "services/sensor-fusion",
+      "status": "planned"
+    },
+    {
+      "id": "c2-ops",
+      "family": "defense",
+      "summary": "C2 workflows, ROE, release gates, human-in/on-the-loop",
+      "parity_targets": [
+        "anduril",
+        "palantir"
+      ],
+      "kpi_goals": {
+        "c2_resilience_score": 0.999
+      },
+      "module": "services/c2-ops",
+      "status": "planned"
+    },
+    {
+      "id": "edge-autonomy",
+      "family": "defense",
+      "summary": "Off-grid autonomy packs, mesh comms",
+      "parity_targets": [
+        "anduril"
+      ],
+      "kpi_goals": {
+        "edge_offgrid_operability_pct": 0.99
+      },
+      "module": "services/edge-autonomy",
+      "status": "planned"
+    },
+    {
+      "id": "observability",
+      "family": "platform",
+      "summary": "Logs/metrics/traces + verify-unified proofs",
+      "parity_targets": [
+        "aws",
+        "microsoft",
+        "google"
+      ],
+      "kpi_goals": {
+        "support_slo_hit_pct": 0.99
+      },
+      "module": "services/observability",
+      "status": "in-progress"
+    },
+    {
+      "id": "billing-usage",
+      "family": "platform",
+      "summary": "Metering, quotas, per-tenant proofs",
+      "parity_targets": [
+        "aws",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "doc_task_success_pct": 0.98
+      },
+      "module": "services/billing-usage",
+      "status": "planned"
+    },
+    {
+      "id": "sdk-js",
+      "family": "sdk",
+      "summary": "TypeSafe SDK (JS/TS) + E2E examples",
+      "parity_targets": [
+        "openai",
+        "aws",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "sdk_coverage_score": 1
+      },
+      "module": "services/sdk-js",
+      "status": "in-progress"
+    },
+    {
+      "id": "sdk-python",
+      "family": "sdk",
+      "summary": "Python SDK",
+      "parity_targets": [
+        "openai",
+        "aws",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "sdk_coverage_score": 1
+      },
+      "module": "services/sdk-python",
+      "status": "planned"
+    },
+    {
+      "id": "sdk-go",
+      "family": "sdk",
+      "summary": "Go SDK",
+      "parity_targets": [
+        "aws",
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "sdk_coverage_score": 1
+      },
+      "module": "services/sdk-go",
+      "status": "planned"
+    },
+    {
+      "id": "sdk-dotnet",
+      "family": "sdk",
+      "summary": ".NET SDK",
+      "parity_targets": [
+        "microsoft"
+      ],
+      "kpi_goals": {
+        "sdk_coverage_score": 1
+      },
+      "module": "services/sdk-dotnet",
+      "status": "planned"
+    },
+    {
+      "id": "docs-portal",
+      "family": "product",
+      "summary": "Dev docs + task-success instrumentation",
+      "parity_targets": [
+        "openai",
+        "aws",
+        "microsoft",
+        "google"
+      ],
+      "kpi_goals": {
+        "doc_task_success_pct": 0.98,
+        "integration_time_days": 2
+      },
+      "module": "services/docs-portal",
+      "status": "in-progress"
+    }
+  ]
+}

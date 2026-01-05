@@ -1,0 +1,5498 @@
+{
+  "generated_at_utc": "2025-12-06T07:20:11.7875129Z",
+  "source_csv": "geo/conflict/v1/actions/conflict_12mo.actions.csv",
+  "status": "ok",
+  "group_column": "iso3",
+  "prob_column": "p_event",
+  "action_column": "action",
+  "corridors": [
+    {
+      "key": "AFG",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "AFG-2020-12",
+          "iso3": "AFG",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "AGO",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.667,
+        "max": 0.667,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "AGO-2020-12",
+          "iso3": "AGO",
+          "archetype": "other_conflict",
+          "p_event": "0.667",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ALB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ALB-2020-12",
+          "iso3": "ALB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "AND",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "AND-2020-12",
+          "iso3": "AND",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ARE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ARE-2020-12",
+          "iso3": "ARE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ARG",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ARG-2020-12",
+          "iso3": "ARG",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ARM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ARM-2020-12",
+          "iso3": "ARM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ATG",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ATG-2020-12",
+          "iso3": "ATG",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "AUS",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "AUS-2020-12",
+          "iso3": "AUS",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "AUT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "AUT-2020-12",
+          "iso3": "AUT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "AZE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "AZE-2020-12",
+          "iso3": "AZE",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BDI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BDI-2020-12",
+          "iso3": "BDI",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BEL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BEL-2020-12",
+          "iso3": "BEL",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BEN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BEN-2020-12",
+          "iso3": "BEN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BFA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.667,
+        "max": 0.667,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BFA-2020-12",
+          "iso3": "BFA",
+          "archetype": "other_conflict",
+          "p_event": "0.667",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BGD",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BGD-2020-12",
+          "iso3": "BGD",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BGR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BGR-2020-12",
+          "iso3": "BGR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BHR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BHR-2020-12",
+          "iso3": "BHR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BHS",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BHS-2020-12",
+          "iso3": "BHS",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BIH",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BIH-2020-12",
+          "iso3": "BIH",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BLR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BLR-2020-12",
+          "iso3": "BLR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BLZ",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BLZ-2020-12",
+          "iso3": "BLZ",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BOL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BOL-2020-12",
+          "iso3": "BOL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BRA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BRA-2020-12",
+          "iso3": "BRA",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BRB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BRB-2020-12",
+          "iso3": "BRB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BRN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BRN-2020-12",
+          "iso3": "BRN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BTN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BTN-2020-12",
+          "iso3": "BTN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "BWA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "BWA-2020-12",
+          "iso3": "BWA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CAF",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CAF-2020-12",
+          "iso3": "CAF",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CAN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CAN-2020-12",
+          "iso3": "CAN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CHE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CHE-2020-12",
+          "iso3": "CHE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CHL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CHL-2020-12",
+          "iso3": "CHL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CHN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CHN-2020-12",
+          "iso3": "CHN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CIV",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CIV-2020-12",
+          "iso3": "CIV",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CMR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CMR-2020-12",
+          "iso3": "CMR",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "COD",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "COD-2020-12",
+          "iso3": "COD",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "COG",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "COG-2020-12",
+          "iso3": "COG",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "COL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "COL-2020-12",
+          "iso3": "COL",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "COM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "COM-2020-12",
+          "iso3": "COM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CPV",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CPV-2020-12",
+          "iso3": "CPV",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CRI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CRI-2020-12",
+          "iso3": "CRI",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CUB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CUB-2020-12",
+          "iso3": "CUB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CYP",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CYP-2020-12",
+          "iso3": "CYP",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "CZE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "CZE-2020-12",
+          "iso3": "CZE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "DEU",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "DEU-2020-12",
+          "iso3": "DEU",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "DJI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "DJI-2020-12",
+          "iso3": "DJI",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "DMA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "DMA-2020-12",
+          "iso3": "DMA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "DNK",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "DNK-2020-12",
+          "iso3": "DNK",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "DOM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "DOM-2020-12",
+          "iso3": "DOM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "DZA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "DZA-2020-12",
+          "iso3": "DZA",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ECU",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ECU-2020-12",
+          "iso3": "ECU",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "EGY",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "EGY-2020-12",
+          "iso3": "EGY",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ERI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ERI-2020-12",
+          "iso3": "ERI",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ESP",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ESP-2020-12",
+          "iso3": "ESP",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "EST",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "EST-2020-12",
+          "iso3": "EST",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ETH",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ETH-2020-12",
+          "iso3": "ETH",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "FIN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "FIN-2020-12",
+          "iso3": "FIN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "FJI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "FJI-2020-12",
+          "iso3": "FJI",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "FRA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "FRA-2020-12",
+          "iso3": "FRA",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "FSM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "FSM-2020-12",
+          "iso3": "FSM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GAB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GAB-2020-12",
+          "iso3": "GAB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GBR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GBR-2020-12",
+          "iso3": "GBR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GEO",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GEO-2020-12",
+          "iso3": "GEO",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GHA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GHA-2020-12",
+          "iso3": "GHA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GIN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GIN-2020-12",
+          "iso3": "GIN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GMB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GMB-2020-12",
+          "iso3": "GMB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GNB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GNB-2020-12",
+          "iso3": "GNB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GNQ",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GNQ-2020-12",
+          "iso3": "GNQ",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GRC",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GRC-2020-12",
+          "iso3": "GRC",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GRD",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GRD-2020-12",
+          "iso3": "GRD",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GTM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GTM-2020-12",
+          "iso3": "GTM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "GUY",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "GUY-2020-12",
+          "iso3": "GUY",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "HND",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.667,
+        "max": 0.667,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "HND-2020-12",
+          "iso3": "HND",
+          "archetype": "other_conflict",
+          "p_event": "0.667",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "HRV",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "HRV-2020-12",
+          "iso3": "HRV",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "HTI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "HTI-2020-12",
+          "iso3": "HTI",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "HUN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "HUN-2020-12",
+          "iso3": "HUN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "IDN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.667,
+        "max": 0.667,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "IDN-2020-12",
+          "iso3": "IDN",
+          "archetype": "other_conflict",
+          "p_event": "0.667",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "IND",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "IND-2020-12",
+          "iso3": "IND",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "IRL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "IRL-2020-12",
+          "iso3": "IRL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "IRN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "IRN-2020-12",
+          "iso3": "IRN",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "IRQ",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "IRQ-2020-12",
+          "iso3": "IRQ",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ISL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ISL-2020-12",
+          "iso3": "ISL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ISR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.0,
+        "max": 0.0,
+        "count": 1
+      },
+      "actions": {
+        "none": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ISR-2020-12",
+          "iso3": "ISR",
+          "archetype": "other_conflict",
+          "p_event": "0",
+          "act_alert": "0",
+          "act_hedge": "0",
+          "act_reroute": "0",
+          "action": "none",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ITA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ITA-2020-12",
+          "iso3": "ITA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "JAM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "JAM-2020-12",
+          "iso3": "JAM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "JOR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "JOR-2020-12",
+          "iso3": "JOR",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "JPN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "JPN-2020-12",
+          "iso3": "JPN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KAZ",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KAZ-2020-12",
+          "iso3": "KAZ",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KEN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KEN-2020-12",
+          "iso3": "KEN",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KGZ",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KGZ-2020-12",
+          "iso3": "KGZ",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KHM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KHM-2020-12",
+          "iso3": "KHM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KIR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KIR-2020-12",
+          "iso3": "KIR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KNA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KNA-2020-12",
+          "iso3": "KNA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KOR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KOR-2020-12",
+          "iso3": "KOR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "KWT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "KWT-2020-12",
+          "iso3": "KWT",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LAO",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LAO-2020-12",
+          "iso3": "LAO",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LBN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LBN-2020-12",
+          "iso3": "LBN",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LBR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LBR-2020-12",
+          "iso3": "LBR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LBY",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LBY-2020-12",
+          "iso3": "LBY",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LCA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LCA-2020-12",
+          "iso3": "LCA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LIE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LIE-2020-12",
+          "iso3": "LIE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LKA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LKA-2020-12",
+          "iso3": "LKA",
+          "archetype": "shock_onset",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LSO",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LSO-2020-12",
+          "iso3": "LSO",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LTU",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LTU-2020-12",
+          "iso3": "LTU",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LUX",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LUX-2020-12",
+          "iso3": "LUX",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "LVA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "LVA-2020-12",
+          "iso3": "LVA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MAR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MAR-2020-12",
+          "iso3": "MAR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MCO",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MCO-2020-12",
+          "iso3": "MCO",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MDA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MDA-2020-12",
+          "iso3": "MDA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MDG",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MDG-2020-12",
+          "iso3": "MDG",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MDV",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MDV-2020-12",
+          "iso3": "MDV",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MEX",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MEX-2020-12",
+          "iso3": "MEX",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MHL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MHL-2020-12",
+          "iso3": "MHL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MKD",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MKD-2020-12",
+          "iso3": "MKD",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MLI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MLI-2020-12",
+          "iso3": "MLI",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MLT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MLT-2020-12",
+          "iso3": "MLT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MMR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MMR-2020-12",
+          "iso3": "MMR",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MNE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MNE-2020-12",
+          "iso3": "MNE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MNG",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MNG-2020-12",
+          "iso3": "MNG",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MOZ",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.667,
+        "max": 0.667,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MOZ-2020-12",
+          "iso3": "MOZ",
+          "archetype": "other_conflict",
+          "p_event": "0.667",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MRT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MRT-2020-12",
+          "iso3": "MRT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MUS",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MUS-2020-12",
+          "iso3": "MUS",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MWI",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MWI-2020-12",
+          "iso3": "MWI",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "MYS",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "MYS-2020-12",
+          "iso3": "MYS",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NAM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NAM-2020-12",
+          "iso3": "NAM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NER",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NER-2020-12",
+          "iso3": "NER",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NGA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NGA-2020-12",
+          "iso3": "NGA",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NIC",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NIC-2020-12",
+          "iso3": "NIC",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NLD",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NLD-2020-12",
+          "iso3": "NLD",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NOR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NOR-2020-12",
+          "iso3": "NOR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NPL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NPL-2020-12",
+          "iso3": "NPL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NRU",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NRU-2020-12",
+          "iso3": "NRU",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "NZL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "NZL-2020-12",
+          "iso3": "NZL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "OMN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "OMN-2020-12",
+          "iso3": "OMN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PAK",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PAK-2020-12",
+          "iso3": "PAK",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PAN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PAN-2020-12",
+          "iso3": "PAN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PER",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PER-2020-12",
+          "iso3": "PER",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PHL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PHL-2020-12",
+          "iso3": "PHL",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PLW",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PLW-2020-12",
+          "iso3": "PLW",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PNG",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PNG-2020-12",
+          "iso3": "PNG",
+          "archetype": "shock_onset",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "POL",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "POL-2020-12",
+          "iso3": "POL",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PRK",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PRK-2020-12",
+          "iso3": "PRK",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PRT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PRT-2020-12",
+          "iso3": "PRT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "PRY",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "PRY-2020-12",
+          "iso3": "PRY",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "QAT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "QAT-2020-12",
+          "iso3": "QAT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ROU",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ROU-2020-12",
+          "iso3": "ROU",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "RUS",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "RUS-2020-12",
+          "iso3": "RUS",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "RWA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "RWA-2020-12",
+          "iso3": "RWA",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SAU",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SAU-2020-12",
+          "iso3": "SAU",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SDN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SDN-2020-12",
+          "iso3": "SDN",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SEN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SEN-2020-12",
+          "iso3": "SEN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SGP",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SGP-2020-12",
+          "iso3": "SGP",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SLB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SLB-2020-12",
+          "iso3": "SLB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SLE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SLE-2020-12",
+          "iso3": "SLE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SLV",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SLV-2020-12",
+          "iso3": "SLV",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SMR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SMR-2020-12",
+          "iso3": "SMR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SOM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SOM-2020-12",
+          "iso3": "SOM",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SRB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SRB-2020-12",
+          "iso3": "SRB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SSD",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SSD-2020-12",
+          "iso3": "SSD",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "STP",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "STP-2020-12",
+          "iso3": "STP",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SUR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SUR-2020-12",
+          "iso3": "SUR",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SVK",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SVK-2020-12",
+          "iso3": "SVK",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SVN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SVN-2020-12",
+          "iso3": "SVN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SWE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SWE-2020-12",
+          "iso3": "SWE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SWZ",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SWZ-2020-12",
+          "iso3": "SWZ",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SYC",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SYC-2020-12",
+          "iso3": "SYC",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "SYR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "SYR-2020-12",
+          "iso3": "SYR",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TCD",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TCD-2020-12",
+          "iso3": "TCD",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TGO",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TGO-2020-12",
+          "iso3": "TGO",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "THA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "THA-2020-12",
+          "iso3": "THA",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TJK",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.667,
+        "max": 0.667,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TJK-2020-12",
+          "iso3": "TJK",
+          "archetype": "other_conflict",
+          "p_event": "0.667",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TKM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TKM-2020-12",
+          "iso3": "TKM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TLS",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TLS-2020-12",
+          "iso3": "TLS",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TON",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TON-2020-12",
+          "iso3": "TON",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TTO",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TTO-2020-12",
+          "iso3": "TTO",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TUN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TUN-2020-12",
+          "iso3": "TUN",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TUR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TUR-2020-12",
+          "iso3": "TUR",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TUV",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TUV-2020-12",
+          "iso3": "TUV",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TWN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TWN-2020-12",
+          "iso3": "TWN",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "TZA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "TZA-2020-12",
+          "iso3": "TZA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "UGA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "UGA-2020-12",
+          "iso3": "UGA",
+          "archetype": "post_conflict_fragile",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "UKR",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "UKR-2020-12",
+          "iso3": "UKR",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "URY",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "URY-2020-12",
+          "iso3": "URY",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "USA",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "USA-2020-12",
+          "iso3": "USA",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "UZB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "UZB-2020-12",
+          "iso3": "UZB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "VAT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "VAT-2020-12",
+          "iso3": "VAT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "VCT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "VCT-2020-12",
+          "iso3": "VCT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "VEN",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "VEN-2020-12",
+          "iso3": "VEN",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "VNM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "VNM-2020-12",
+          "iso3": "VNM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "VUT",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "VUT-2020-12",
+          "iso3": "VUT",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "WSM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "WSM-2020-12",
+          "iso3": "WSM",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "XXK",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "XXK-2020-12",
+          "iso3": "XXK",
+          "archetype": "unknown",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "YEM",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.969,
+        "max": 0.969,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "YEM-2020-12",
+          "iso3": "YEM",
+          "archetype": "chronic_conflict",
+          "p_event": "0.969",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ZAF",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ZAF-2020-12",
+          "iso3": "ZAF",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ZMB",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ZMB-2020-12",
+          "iso3": "ZMB",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    },
+    {
+      "key": "ZWE",
+      "row_count": 1,
+      "prob_summary": {
+        "column": "p_event",
+        "mean": 0.2804,
+        "max": 0.2804,
+        "count": 1
+      },
+      "actions": {
+        "reroute": 1
+      },
+      "rows": [
+        {
+          "unit_id": "ZWE-2020-12",
+          "iso3": "ZWE",
+          "archetype": "low_risk",
+          "p_event": "0.2804",
+          "act_alert": "1",
+          "act_hedge": "1",
+          "act_reroute": "1",
+          "action": "reroute",
+          "t_alert": "0.01",
+          "t_hedge": "0.075",
+          "t_reroute": "0.0875"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "usgs_quakes_day": {
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+    "pluck": "features[].properties.mag",
+    "note": "Latest quake magnitudes (24h)"
+  },
+  "usgs_quakes_week": {
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
+    "pluck": "features[].properties.mag",
+    "note": "Quake magnitudes (7d)"
+  },
+  "gdelt_au_24h": {
+    "url": "https://api.gdeltproject.org/api/v2/events/geojson?query=Australia&timespan=24h&maxrecords=250",
+    "pluck": "features[].properties.NumArticles",
+    "note": "GDELT event NumArticles for Australia (24h)"
+  },
+  "worldbank_aus_cpi": {
+    "url": "https://api.worldbank.org/v2/country/AUS/indicator/FP.CPI.TOTL.ZG?format=json",
+    "pluck": "1[].value",
+    "note": "Australia CPI YoY (WB)"
+  },
+  "worldbank_aus_unemp": {
+    "url": "https://api.worldbank.org/v2/country/AUS/indicator/SL.UEM.TOTL.ZS?format=json",
+    "pluck": "1[].value",
+    "note": "Australia Unemployment % (WB)"
+  },
+  "openmeteo_sydney_temp_hourly": {
+    "url": "https://api.open-meteo.com/v1/forecast?latitude=-33.8688&longitude=151.2093&hourly=temperature_2m&past_days=1&forecast_days=1",
+    "pluck": "hourly.temperature_2m[]",
+    "note": "Sydney hourly temperature (past+next)"
+  },
+  "wikimedia_au_pageviews": {
+    "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Australia/daily/{start}/{end}",
+    "pluck": "items[].views",
+    "note": "Wikipedia Australia page daily views; provide params {start},{end} as YYYYMMDD"
+  },
+  "coingecko_btc_usd_7d": {
+    "url": "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7",
+    "pluck": "prices[][1]",
+    "note": "BTC/USD close samples (7d)"
+  },
+  "tides_sfo_temp": {
+    "url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=9414290&product=water_temperature&datum=mllw&time_zone=gmt&units=metric&format=json",
+    "pluck": "data[].v",
+    "note": "NOAA water temperature, SF example"
+  }
+}

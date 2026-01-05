@@ -1,0 +1,162 @@
+import nacl from 'tweetnacl';
+import Ajv from 'ajv';
+
+import addFormats from 'ajv-formats';
+
+
+function isPojo(x) { return x && typeof x === "object" && !Array.isArray(x); }
+function canonicalize(v) {
+  if (v === null) return "null";
+  const t = typeof v;
+  if (t === "number") { if (!Number.isFinite(v)) throw new Error("non-finite"); return JSON.stringify(v); }
+  if (t === "boolean") return v ? "true" : "false";
+  if (t === "string") return JSON.stringify(v);
+  if (Array.isArray(v)) return "[" + v.map(canonicalize).join(",") + "]";
+  if (isPojo(v)) {
+    const keys = Object.keys(v).sort();
+    return "{" + keys.map(k => JSON.stringify(k) + ":" + canonicalize(v[k])).join(",") + "}";
+  }
+  throw new Error("unsupported type");
+}
+function normB64(s) {
+function u8FromB64(s) {
+
+async function sha256_b64(str){
+  const data = new TextEncoder().encode(str);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  let s = ""; const bytes = new Uint8Array(digest);
+  for (let i=0;i<bytes.length;i++) s += String.fromCharCode(bytes[i]);
+  return btoa(s);
+}
+
+const unifiedSchema = {
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  title: "Unified Proof Vault (Codex v5 + OceanOS)",
+  type: "object",
+  required: ["meta","refs","sig"],
+  additionalProperties: false,
+  properties: {
+    meta: {
+      type: "object",
+      required: ["version","createdAt","generator","sources"],
+      additionalProperties: false,
+      properties: {
+        version: { type: "string" },
+        createdAt: { type: "string", format: "date-time" },
+        generator: { type: "string" },
+        sources: {
+          type: "array",
+          items: {
+            type: "object",
+            required: ["kind","path"],
+            additionalProperties: false,
+            properties: {
+              kind: { type: "string", enum: ["codex","divergence"] },
+              subtype: { type: "string" },
+              path: { type: "string" }
+            }
+          }
+        }
+      }
+    },
+    refs: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["kind","subtype","path","payloadHash","kid","issuedAt"],
+        additionalProperties: false,
+        properties: {
+          kind: { type: "string", enum: ["codex","divergence"] },
+          subtype: { type: "string" },
+          path: { type: "string" },
+          payloadHash: { type: "string" },
+          kid: { type: "string" },
+          issuedAt: { type: "string", format: "date-time" }
+        }
+      }
+    },
+    sig: {
+      type: "object",
+      required: ["hash","signature","pubkey","kid","alg"],
+      additionalProperties: false,
+      properties: {
+        hash: { type: "string" },
+        signature: { type: "string" },
+        pubkey: { type: "string" },
+        kid: { type: "string" },
+        alg: { type: "string", enum: ["Ed25519-SHA256-RFC8785"] }
+      }
+    }
+  }
+};
+
+function json(obj, status=200, extraHeaders={}) {
+  return new Response(JSON.stringify(obj, null, 2), {
+    status,
+    headers: { "content-type":"application/json; charset=utf-8", ...extraHeaders }
+  });
+}
+function withCors(resp){
+  const h = new Headers(resp.headers);
+  if (!h.has("access-control-allow-origin")) {
+    h.set("access-control-allow-origin", "*");
+    h.set("access-control-allow-methods", "GET, POST, OPTIONS");
+    h.set("access-control-allow-headers", "content-type, x-api-key");
+  }
+  return new Response(resp.body, { status: resp.status, headers: h });
+
+
+}}}
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+
+    if (request.method === "OPTIONS") {
+      return new Response(null, { status: 204, headers: { "access-control-allow-origin":"*", "access-control-allow-methods":"GET, POST, OPTIONS", "access-control-allow-headers":"content-type, x-api-key" } });
+    }
+
+    if (url.pathname === "/health") {
+      return new Response(JSON.stringify({ ok:true, ts:new Date().toISOString() }, null, 2), { status: 200, headers: { "content-type":"application/json; charset=utf-8", "access-control-allow-origin":"*", "access-control-allow-methods":"GET, POST, OPTIONS", "access-control-allow-headers":"content-type, x-api-key", "cache-control":"no-cache" } });
+    }
+
+    if (url.pathname === "/verify") {
+      if (request.method !== "POST") return withCors(json({ ok:false, error:"POST only" }, 405));
+
+      let data;
+      try { data = await request.json(); }
+      catch { return withCors(json({ ok:false, error:"invalid JSON" }, 400)); }
+
+      const ajv = new Ajv({ allErrors:true, strict:false, validateSchema:false });
+      (addFormats?.default ? addFormats.default : addFormats)(ajv);
+      const validate = ajv.compile(typeof unifiedSchema !== "undefined" ? unifiedSchema : { "type":"object", "required":["meta","refs","sig"], "additionalProperties":false, "properties":{ "meta":{"type":"object"}, "refs":{"type":"array"}, "sig":{"type":"object"} } });
+      if (!validate(data)) return withCors(json({ ok:false, stage:"schema", errors: validate.errors }, 422));
+
+      try {
+        const { meta, refs, sig } = data;
+        const canon = canonicalize({ meta, refs });
+        const hash  = await sha256_b64(canon);
+        if (hash !== sig.hash) return withCors(json({ ok:false, stage:"unified-hash", expected:sig.hash, got:hash }, 400));
+
+        const okSig = nacl.sign.detached.verify(
+          u8FromB64(sig.hash),
+          u8FromB64(sig.signature),
+          u8FromB64(sig.pubkey)
+        );
+        if (!okSig) return withCors(json({ ok:false, stage:"unified-signature", error:"invalid signature" }, 400));
+
+        return new Response(JSON.stringify({
+          ok:true,
+          verified:true,
+          refs:Array.isArray(refs)? refs.length : 0,
+          alg:sig.alg,
+          rootHash:sig.hash
+        }, null, 2), { status: 200, headers: { "content-type":"application/json; charset=utf-8", "access-control-allow-origin":"*", "access-control-allow-methods":"GET, POST, OPTIONS", "access-control-allow-headers":"content-type, x-api-key", "cache-control":"no-cache" } });
+      } catch (e) {
+        return withCors(json({ ok:false, stage:"exception", error: e?.message ?? String(e),
+                               stack: (e?.stack ?? "").split("\n").slice(0,6) }, 500));
+      }
+    }
+
+    return withCors(json({ ok:false, error:"Not Found" }, 404));
+  }
+};

@@ -1,0 +1,11 @@
+﻿export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    if (url.pathname === "/health") {
+      return new Response(JSON.stringify({ ok: true, ts: new Date().toISOString() }, null, 2), {
+        headers: { "content-type": "application/json" }
+      });
+    }
+    return new Response("ok");
+  }
+}

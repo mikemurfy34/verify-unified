@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>Playground — Verify Unified</title><link rel="stylesheet" href="./dashboard.css"></head>
+<body><div class="container">
+<h1>Playground</h1>
+<div class="card"><p>Paste a signed payload matching the schema, then <b>Verify</b>.</p>
+<textarea id="inp" spellcheck="false">{}</textarea>
+<p><button id="btn">Verify</button> <small id="hint"></small></p>
+<pre id="out">{ }</pre></div>
+<script>
+const btn = document.getElementById('btn'), out = document.getElementById('out'), inp = document.getElementById('inp'), hint = document.getElementById('hint');
+hint.textContent = location.origin + '/verify';
+btn.onclick = async () => {
+  out.textContent = '…';
+  try{
+    const res = await fetch('/verify', { method:'POST', headers:{'content-type':'application/json'}, body: inp.value });
+    const txt = await res.text();
+    out.textContent = txt;
+  } catch(e){ out.textContent = e.message; }
+};
+</script>
+</div></body></html>

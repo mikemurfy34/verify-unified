@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"/><title>SIM — constraints & collapse</title>
+<link rel="stylesheet" href="./tpe.css"/>
+<div class="wrap">
+  <h1>SIM</h1>
+  <div class="grid">
+    <div class="card half" id="spec">
+      <div class="row"><div class="badge">/svc/sim/spec</div><div class="status"></div></div>
+      <div class="btns"><button class="run">Spec</button></div>
+      <div class="proofs"></div><pre></pre>
+    </div>
+    <div class="card half" id="collapse">
+      <div class="row"><div class="badge">/svc/sim/hypothesis/collapse</div><div class="status"></div></div>
+      <label>Hypotheses (JSON array)</label><textarea class="hyps" rows="3">["up","flat","down"]</textarea>
+      <label>Weights (JSON array)</label><textarea class="weights" rows="2">[0.2,0.6,0.2]</textarea>
+      <label>Seed</label><input class="seed" value="codex"/>
+      <div class="btns"><button class="run">Collapse</button></div>
+      <div class="proofs"></div><pre></pre>
+    </div>
+    <div class="card half" id="project">
+      <div class="row"><div class="badge">/svc/sim/project</div><div class="status"></div></div>
+      <label>Series</label><textarea class="series" rows="3">[10, 11.5, 9.0, 25, 10.5, 11.1]</textarea>
+      <label>Constraints (JSON)</label><textarea class="cons" rows="3">{"conserveSum":64,"lipschitz":2,"gamma":0.2}</textarea>
+      <div class="btns"><button class="run">Project</button></div>
+      <div class="proofs"></div><pre></pre>
+    </div>
+  </div>
+</div>
+<script src="./sim.js"></script>

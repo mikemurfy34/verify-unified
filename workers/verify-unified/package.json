@@ -1,0 +1,10 @@
+{
+  "name": "verify-unified",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "dependencies": {
+    "canonicalize": "^2.0.0",
+    "tweetnacl": "^1.0.3"
+  }
+}

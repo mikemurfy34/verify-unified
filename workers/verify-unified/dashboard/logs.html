@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logs Viewer</title>
+  <style>
+    body { font-family: monospace; margin: 2rem; background: #fafafa; }
+    button { margin-bottom: 1rem; padding: 0.5rem 1rem; font-weight: bold; }
+    pre { background: #fff; padding: 1rem; border: 1px solid #ccc; height: 500px; overflow-y: scroll; }
+  </style>
+</head>
+<body>
+  <h1>📜 Logs Viewer</h1>
+  <button onclick="loadLogs()">Reload</button>
+  <pre id="logOutput">(logs will appear here)</pre>
+
+  <script>
+    async function loadLogs() {
+      const out = document.getElementById('logOutput');
+      try {
+        // By default: try local path
+        const res = await fetch('../../../runs/logs/latest.log');
+        const text = await res.text();
+        out.textContent = text;
+      } catch (err) {
+        out.textContent = "Error loading logs: " + err;
+      }
+    }
+    loadLogs();
+  </script>
+</body>
+</html>

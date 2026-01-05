@@ -1,0 +1,29 @@
+{
+  "system": "codex",
+  "kind": "global_status",
+  "as_of": "2025-12-01T22:20:20",
+  "version": "v1",
+  "domains": [
+    {
+      "system": "codex",
+      "domain": "geo_conflict_v1",
+      "kind": "corridor_state",
+      "as_of": "12/01/2025 22:20:20",
+      "version": "v1.1",
+      "metrics": {
+        "total_corridors": 2,
+        "counts": {
+          "none": 2,
+          "reroute": 0,
+          "hedge": 0,
+          "alert": 0
+        }
+      },
+      "refs": {
+        "status": "status\\geo\\conflict\\v1\\corridor_state.latest.json",
+        "ledger": "ledger/govos/geo_conflict_v1/corridor_state.2025-11-30.json",
+        "proof": "proofs/geo/conflict/v1/geo_conflict_v1.corridor_state.proof.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+//
+
+async function handleVerify(req) {
+  try {
+    const bodyText = await req.text();
+    let json;
+    try { json = JSON.parse(bodyText); }
+    catch (e) { return jsonResponse({ ok: false, error: "Invalid JSON body", detail: e?.message }, 400); }
+
+    const symbols = {
+      getEntriesDeep: typeof getEntriesDeep,
+      validateUnified: typeof validateUnified,
+      verifyEntry: typeof verifyEntry,
+      ajv: (typeof ajv === "object" && typeof ajv.errorsText === "function") ? "ok" : typeof ajv
+    };
+    if (symbols.getEntriesDeep !== "function" || symbols.validateUnified !== "function" ||
+        symbols.verifyEntry !== "function" || symbols.ajv === "undefined") {
+      return jsonResponse({ ok: false, error: "Verifier not wired", symbols }, 500);
+    }
+
+    const maybeEntries = getEntriesDeep(json);
+    const root = (maybeEntries && !("entries" in json)) ? { entries: maybeEntries } : json;
+
+    if (!validateUnified(root)) {
+      return jsonResponse({ ok: false, error: "Schema validation failed",
+                           issues: ajv.errorsText(validateUnified.errors, { separator: "\n" }) }, 400);
+    }
+
+    const results = [];
+    let verified = 0, failed = 0, hash_mismatch = 0, signature_failed = 0;
+    for (const entry of root.entries) {
+      try {
+        const r = await verifyEntry(entry);
+        results.push(r);
+        if (r.ok) verified++; else failed++;
+        if (!r.hash_ok) hash_mismatch++;
+        if (!r.sig_ok) signature_failed++;
+      } catch (e) {
+        results.push({ ok: false, error: e?.message ?? String(e) });
+        failed++;
+      }
+    }
+
+    return jsonResponse({
+      ok: failed === 0,
+      total: root.entries.length,
+      verified, failed, hash_mismatch, signature_failed, results,
+    }, failed ? 400 : 200);
+  } catch (err) {
+    return jsonResponse({ ok: false, error: err?.message ?? String(err),
+                          stack: (err?.stack ?? "").split("\n").slice(0,8) }, 500);
+  }
+}
+
+// --- clean export with routes (CORS/Cache/BOM-CRLF sanitization) ---
+// --- cors helpers (inserted) ---
+function withCors(resp) {
+  const h = new Headers(resp.headers);
+  if (!h.has("access-control-allow-origin")) {
+    h.set("access-control-allow-origin", "*");
+    h.set("access-control-allow-methods", "GET, POST, OPTIONS");
+    h.set("access-control-allow-headers", "content-type, x-api-key");
+  }
+  return new Response(resp.body, { status: resp.status, headers: h });
+}
+function maybeDownload(u, resp, name = "latest.log") {
+  const v = (u.searchParams.get("download") || "").toLowerCase();
+  if (v === "1" || v === "true") {
+    const h = new Headers(resp.headers);
+    h.set("content-disposition", `attachment; filename="${name}"`);
+    return new Response(resp.body, { status: resp.status, headers: h });
+  }
+  return resp;
+}
+function jsonResponse(obj, status = 200) {
+  return new Response(JSON.stringify(obj, null, 2), {
+    status,
+    headers: { "content-type": "application/json; charset=utf-8" },
+  });
+}
+import { getEntriesDeep, validateUnified, verifyEntry, ajv } from './verifier.mjs';
+
+export default {
+  async fetch(request) {
+    const { method, url } = request;
+    const u = new URL(url);
+
+    
+    
+    
+    
+    
+    }
+    }
+    }
+    if (typeof jsonResponse !== "function") {
+      console.error("jsonResponse missing");
+      return new Response(JSON.stringify({ ok:false, error:"jsonResponse missing" }), {
+        status: 500, headers: { "content-type": "application/json" }
+      });
+    }if (method === "OPTIONS") return withCors(new Response(null, { status: 204 }));
+
+    if (u.pathname === "/") {
+      return withCors(jsonResponse({ ok: true, routes: ["/health","/verify (POST)","/transcript","/transcript.txt","/verify/symbols"] }));
+    }
+
+    if (u.pathname === "/health") {
+      const res = jsonResponse({ ok: true, ts: new Date().toISOString() });
+      res.headers.set("cache-control", "no-cache");
+      return withCors(res);
+    }
+
+    if (u.pathname === "/verify/symbols") {
+      const s = {
+        getEntriesDeep: typeof getEntriesDeep,
+        validateUnified: typeof validateUnified,
+        verifyEntry: typeof verifyEntry,
+        ajv: (typeof ajv === "object" && typeof ajv.errorsText === "function") ? "ok" : typeof ajv
+      };
+      return withCors(jsonResponse({ ok: true, symbols: s }));
+    }
+
+    if (u.pathname === "/verify" && method === "POST") {
+      return withCors(await handleVerify(request));
+    }
+
+    // JSON transcript (?lines=40, ?download=1)
+    if (u.pathname === "/transcript") {
+      const rawUrl = "https://raw.githubusercontent.com/mikemurfy34/codex-v5-public-logs/main/latest.log";
+      try {
+        const resp = await fetch(rawUrl, { cf: { cacheEverything: true, cacheTtl: 60 } });
+        if (!resp.ok) return withCors(jsonResponse({ ok: false, error: "GitHub fetch failed", status: resp.status }, 502));
+        const raw = await resp.text();
+        const text = raw.replace(/^\uFEFF/, "").replace(/\r/g, "");
+        const max = Math.max(1, parseInt(u.searchParams.get("lines") || "100", 10));
+        const lines = text.split("\n").slice(0, max);
+        const out = jsonResponse({ ok: true, count: lines.length, lines });
+        out.headers.set("cache-control", "public, max-age=60, s-maxage=60");
+        return withCors(maybeDownload(u, out, "latest.json"));
+      } catch (err) {
+        return withCors(jsonResponse({ ok: false, error: err.message }, 500));
+      }
+    }
+
+    // Plain-text transcript (?lines=40, ?download=1)
+    if (u.pathname === "/transcript.txt") {
+      const rawUrl = "https://raw.githubusercontent.com/mikemurfy34/codex-v5-public-logs/main/latest.log";
+      try {
+        const resp = await fetch(rawUrl, { cf: { cacheEverything: true, cacheTtl: 60 } });
+        if (!resp.ok) return withCors(new Response("GitHub fetch failed", { status: 502 }));
+        const raw = await resp.text();
+        const text = raw.replace(/^\uFEFF/, "").replace(/\r/g, "");
+        const max = Math.max(1, parseInt(u.searchParams.get("lines") || "100", 10));
+        const outText = text.split("\n").slice(0, max).join("\n");
+        const out = new Response(outText, {
+          status: 200,
+          headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=60, s-maxage=60" }
+        });
+        return withCors(maybeDownload(u, out, "latest.log"));
+      } catch (err) {
+        return withCors(new Response("Internal Error", { status: 500 }));
+      }
+    }
+
+    return withCors(jsonResponse({ ok: false, error: "Not found" }, 404));
+  },
+};
+
+
+
+
+
+
+
+
+
+

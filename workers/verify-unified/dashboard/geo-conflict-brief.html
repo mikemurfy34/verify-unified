@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sovereign Intelligence Pilot – Geo Conflict Mitigation Brief</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./dashboard.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #f9fafb;
+    }
+
+    .gc-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 60%),
+        radial-gradient(circle at top right, rgba(129,140,248,0.18), transparent 55%),
+        linear-gradient(to bottom, #020617, #020617 45%, #020617);
+    }
+
+    .gc-header {
+      padding: 1.25rem 1.75rem 0.75rem;
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+    }
+
+    .gc-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .gc-title-block h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .gc-title-block p {
+      margin: 0.15rem 0 0;
+      font-size: 0.85rem;
+      color: #cbd5f5;
+    }
+
+    .gc-header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    .gc-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 0.3rem 0.8rem;
+      font-size: 0.8rem;
+      background: rgba(15,23,42,0.8);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .gc-btn span.icon {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .gc-chip-row {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+      align-items: center;
+    }
+
+    .gc-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: rgba(15,23,42,0.75);
+      font-size: 0.78rem;
+    }
+
+    .gc-chip strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .gc-chip .dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: #64748b;
+    }
+
+    .gc-chip.ok {
+      border-color: rgba(22,163,74,0.7);
+      color: #bbf7d0;
+    }
+
+    .gc-chip.ok .dot {
+      background: #16a34a;
+    }
+
+    .gc-chip.error {
+      border-color: rgba(248,113,113,0.7);
+      color: #fecaca;
+    }
+
+    .gc-main {
+      flex: 1;
+      padding: 1.4rem 1.75rem 2rem;
+    }
+
+    @media (max-width: 960px) {
+      .gc-header {
+        padding: 1rem 0.9rem 0.7rem;
+      }
+      .gc-main {
+        padding: 1rem 0.9rem 1.5rem;
+      }
+    }
+
+    .gc-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 960px) {
+      .gc-layout {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .gc-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148,163,184,0.26);
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.9), rgba(15,23,42,1));
+      padding: 1rem 1rem 0.9rem;
+      box-shadow:
+        0 18px 40px rgba(15,23,42,0.85),
+        0 0 0 1px rgba(15,23,42,0.65);
+    }
+
+    .gc-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .gc-card-header h2 {
+      margin: 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .gc-card-header span.sub {
+      font-size: 0.79rem;
+      color: #9ca3af;
+    }
+
+    .gc-metric-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .gc-pill-metric {
+      display: inline-flex;
+      flex-direction: column;
+      border-radius: 0.75rem;
+      padding: 0.45rem 0.7rem;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.95);
+      min-width: 8.5rem;
+    }
+
+    .gc-pill-metric label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+    }
+
+    .gc-pill-metric span.val {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .gc-pill-metric span.val-strong {
+      color: #fb923c;
+    }
+
+    .gc-pill-metric span.val-ok {
+      color: #22c55e;
+    }
+
+    .gc-section {
+      margin-bottom: 0.8rem;
+    }
+
+    .gc-section h3 {
+      margin: 0 0 0.3rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .gc-section p {
+      margin: 0.2rem 0;
+      font-size: 0.84rem;
+      color: #e5e7eb;
+    }
+
+    .gc-section p span.muted {
+      color: #9ca3af;
+    }
+
+    .gc-section p span.code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      background: rgba(15,23,42,0.9);
+      padding: 0.05rem 0.3rem;
+      border-radius: 0.3rem;
+      border: 1px solid rgba(148,163,184,0.4);
+    }
+
+    .gc-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.2rem 0 0.3rem;
+      font-size: 0.84rem;
+    }
+
+    .gc-list li {
+      margin: 0.15rem 0;
+      padding-left: 0.2rem;
+    }
+
+    .gc-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.08rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.55);
+      background: rgba(15,23,42,0.9);
+      font-size: 0.74rem;
+      color: #e5e7eb;
+      margin-left: 0.25rem;
+    }
+
+    .gc-tag strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .gc-tag.reroute {
+      border-color: rgba(248,113,113,0.75);
+      background: rgba(127,29,29,0.9);
+      color: #fee2e2;
+    }
+
+    .gc-tag.watch {
+      border-color: rgba(59,130,246,0.75);
+      background: rgba(30,64,175,0.9);
+      color: #dbeafe;
+    }
+
+    .gc-tag.low {
+      border-color: rgba(34,197,94,0.75);
+      background: rgba(22,101,52,0.9);
+      color: #bbf7d0;
+    }
+
+    .gc-muted {
+      color: #9ca3af;
+      font-size: 0.8rem;
+    }
+
+    .gc-footer-note {
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .gc-footer-note strong {
+      color: #e5e7eb;
+    }
+
+    .gc-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="gc-shell">
+    <header class="gc-header">
+      <div class="gc-header-top">
+        <div class="gc-title-block">
+          <h1>Geo Conflict Mitigation Brief</h1>
+          <p>Deterministic 12-month conflict corridor summary (T+1) for operators and policy leads.</p>
+        </div>
+        <div class="gc-header-actions">
+          <a href="./geo-conflict.html" class="gc-btn">
+            <span class="icon">⟵</span>
+            <span>Back to Geo Corridor Board</span>
+          </a>
+          <a href="./operator-portal.html" class="gc-btn">
+            <span class="icon">⌂</span>
+            <span>Operator Portal</span>
+          </a>
+          <a href="./proof.html" class="gc-btn">
+            <span class="icon">☑</span>
+            <span>Unified Proofs</span>
+          </a>
+        </div>
+      </div>
+      <div class="gc-chip-row">
+        <div id="gc-status-chip" class="gc-chip">
+          <span class="dot"></span>
+          <span><strong>Status</strong> <span id="gc-status-text">Loading&hellip;</span></span>
+        </div>
+        <div class="gc-chip">
+          <span class="dot"></span>
+          <span><strong>Snapshot</strong> <span id="gc-meta-text">Awaiting corridor_state.latest.json&hellip;</span></span>
+        </div>
+        <div class="gc-chip">
+          <span class="dot"></span>
+          <span><strong>Columns</strong> <span id="gc-columns-text" class="gc-muted">group / prob / action &mdash; pending</span></span>
+        </div>
+      </div>
+    </header>
+
+    <main class="gc-main">
+      <div class="gc-layout">
+        <!-- Left: Executive summary + mitigation framing -->
+        <section class="gc-card">
+          <div class="gc-card-header">
+            <h2>Executive Snapshot</h2>
+            <span class="sub" id="gc-exec-sub">Awaiting calibrated corridor_state&hellip;</span>
+          </div>
+
+          <div class="gc-metric-row">
+            <div class="gc-pill-metric">
+              <label>Total units (corridor-units)</label>
+              <span class="val" id="gc-metric-total-units">0</span>
+            </div>
+            <div class="gc-pill-metric">
+              <label>Units flagged for reroute</label>
+              <span class="val val-strong" id="gc-metric-reroute-units">0 (0.0%)</span>
+            </div>
+            <div class="gc-pill-metric">
+              <label>High-risk corridors</label>
+              <span class="val val-strong" id="gc-metric-highrisk-count">0</span>
+            </div>
+            <div class="gc-pill-metric">
+              <label>Watch-list corridors</label>
+              <span class="val" id="gc-metric-watchlist-count">0</span>
+            </div>
+          </div>
+
+          <div class="gc-section">
+            <h3>Mitigation posture (12-month horizon)</h3>
+            <p id="gc-exec-text-1">
+              Loading calibrated conflict probabilities and actions&hellip;
+            </p>
+            <p id="gc-exec-text-2" class="gc-muted">
+              Once loaded, this section describes the global reroute posture, watch-list footprint,
+              and where corridor exposure is concentrated.
+            </p>
+          </div>
+
+          <div class="gc-section">
+            <h3>Key numbers for decision-makers</h3>
+            <p id="gc-exec-numbers">
+              &mdash;
+            </p>
+          </div>
+
+          <div class="gc-footer-note">
+            <strong>Provenance.</strong> This brief is generated directly from
+            <span class="gc-code">status/geo/conflict/v1/corridor_state.latest.json</span>, which is refreshed via the
+            nightly <span class="gc-code">geo-conflict-nightly.ps1</span> pipeline and hash-anchored in
+            <span class="gc-code">proofs/unified/corridor_state.proof.json</span>.
+          </div>
+        </section>
+
+        <!-- Right: Corridor details (top reroute + watch-list) -->
+        <section class="gc-card">
+          <div class="gc-card-header">
+            <h2>Corridor Detail</h2>
+            <span class="sub">Top reroute corridors and watch-list corridors (alert / hedge)</span>
+          </div>
+
+          <div class="gc-section">
+            <h3>Top reroute corridors</h3>
+            <p id="gc-reroute-intro" class="gc-muted">
+              Waiting for calibrated corridor_state&hellip;
+            </p>
+            <ul id="gc-reroute-list" class="gc-list">
+              <li class="gc-muted">Once loaded, this section lists the highest-risk corridors with units assigned to
+                reroute, including conflict probability and exposure footprint.</li>
+            </ul>
+          </div>
+
+          <div class="gc-section">
+            <h3>Watch-list corridors (alert / hedge)</h3>
+            <p id="gc-watch-intro" class="gc-muted">
+              Waiting for calibrated corridor_state&hellip;
+            </p>
+            <ul id="gc-watch-list" class="gc-list">
+              <li class="gc-muted">Once loaded, this section lists corridors with alert / hedge signals but no reroute
+                requirement, ordered by conflict probability.</li>
+            </ul>
+          </div>
+
+          <div class="gc-footer-note">
+            <strong>Usage.</strong> This page is designed to drop straight into a ministerial brief, CEO risk note,
+            or SoW. Each bullet is deterministic and grounded in the calibrated probability and action matrix.
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (async function () {
+      const statusChip = document.getElementById("gc-status-chip");
+      const statusText = document.getElementById("gc-status-text");
+      const metaText   = document.getElementById("gc-meta-text");
+      const colsText   = document.getElementById("gc-columns-text");
+
+      const execSub      = document.getElementById("gc-exec-sub");
+      const execText1    = document.getElementById("gc-exec-text-1");
+      const execText2    = document.getElementById("gc-exec-text-2");
+      const execNumbers  = document.getElementById("gc-exec-numbers");
+
+      const metricTotalUnits   = document.getElementById("gc-metric-total-units");
+      const metricRerouteUnits = document.getElementById("gc-metric-reroute-units");
+      const metricHighRisk     = document.getElementById("gc-metric-highrisk-count");
+      const metricWatchList    = document.getElementById("gc-metric-watchlist-count");
+
+      const rerouteIntro = document.getElementById("gc-reroute-intro");
+      const rerouteList  = document.getElementById("gc-reroute-list");
+      const watchIntro   = document.getElementById("gc-watch-intro");
+      const watchList    = document.getElementById("gc-watch-list");
+
+      function setStatus(kind, text) {
+        statusText.textContent = text;
+        statusChip.classList.remove("ok", "error");
+        if (kind === "ok") {
+          statusChip.classList.add("ok");
+        } else if (kind === "error") {
+          statusChip.classList.add("error");
+        }
+      }
+
+      function percent(num) {
+        if (typeof num !== "number" || !isFinite(num)) return "";
+        return (num * 100).toFixed(1) + "%";
+      }
+
+      function safeNumber(v) {
+        return (typeof v === "number" && isFinite(v)) ? v : null;
+      }
+
+      function formatUnits(n) {
+        if (n === 1) return "1 unit";
+        return n.toString() + " units";
+      }
+
+      function formatCorridorLabel(key) {
+        if (!key) return "(unknown corridor)";
+        return key.toString();
+      }
+
+      function describePrimaryAction(action) {
+        if (action === "reroute") return "reroute";
+        if (action === "alert" || action === "hedge") return "alert / hedge";
+        if (action === "_none" || action === "none") return "no immediate action";
+        return action;
+      }
+
+      try {
+        const res = await fetch("status/geo/conflict/v1/corridor_state.latest.json", { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status + " " + res.statusText);
+        }
+
+        const data = await res.json();
+        const status = data.status || "unknown";
+        const generatedAt = data.generated_at_utc || "unknown";
+        const groupCol = data.group_column || "(none)";
+        const probCol  = data.prob_column || "(none)";
+        const actionCol = data.action_column || "(none)";
+        const corridors = Array.isArray(data.corridors) ? data.corridors : [];
+
+        let localStr = "";
+        try {
+          const d = new Date(generatedAt);
+          if (!isNaN(d.getTime())) {
+            localStr = d.toLocaleString();
+          }
+        } catch (_) {}
+
+        metaText.textContent =
+          "Generated: " + generatedAt +
+          (localStr ? " (local: " + localStr + ")" : "") +
+          " · Corridors: " + corridors.length.toString();
+
+        colsText.textContent =
+          "group: " + groupCol +
+          " · prob: " + probCol +
+          " · action: " + actionCol;
+
+        if (status !== "ok") {
+          setStatus("error", status + (data.message ? " – " + data.message : ""));
+          execSub.textContent = "Non-OK corridor_state status; see nightly geo/conflict pipeline logs.";
+          execText1.textContent = "The corridor_state snapshot is flagged as '" + status +
+            "'. No mitigation brief is produced. Investigate the geo/conflict pipeline and re-run.";
+          execText2.textContent = "";
+          execNumbers.textContent = "";
+          rerouteIntro.textContent = "No data available for reroute corridors (status=" + status + ").";
+          watchIntro.textContent = "No data available for watch-list corridors (status=" + status + ").";
+          rerouteList.innerHTML = "";
+          watchList.innerHTML = "";
+          return;
+        } else {
+          setStatus("ok", "OK · corridor_state.latest.json loaded");
+        }
+
+        // Enrich corridors with metrics
+        const enriched = corridors.map(function (c) {
+          const prob = c.prob_summary || {};
+          const actions = c.actions || {};
+          const maxP = safeNumber(prob.max);
+          const meanP = safeNumber(prob.mean);
+          const rowCount = (typeof c.row_count === "number") ? c.row_count : 0;
+          const rerouteCount = actions.reroute ? Number(actions.reroute) : 0;
+          const alertCount = (actions.alert ? Number(actions.alert) : 0) +
+                             (actions.hedge ? Number(actions.hedge) : 0);
+
+          const actionKeys = Object.keys(actions);
+          let primaryAction = "_none";
+          if (actionKeys.length > 0) {
+            primaryAction = actionKeys.sort(function (a, b) {
+              return (Number(actions[b]) || 0) - (Number(actions[a]) || 0);
+            })[0];
+          }
+
+          return {
+            raw: c,
+            key: c.key,
+            totalRows: rowCount,
+            maxP: maxP,
+            meanP: meanP,
+            maxPDisplay: maxP !== null ? percent(maxP) : "",
+            meanPDisplay: meanP !== null ? percent(meanP) : "",
+            rerouteCount: rerouteCount,
+            alertCount: alertCount,
+            primaryAction: primaryAction
+          };
+        });
+
+        // Aggregate metrics
+        const totalUnits = enriched.reduce(function (acc, e) {
+          return acc + (e.totalRows || 0);
+        }, 0);
+
+        const totalRerouteUnits = enriched.reduce(function (acc, e) {
+          return acc + (e.rerouteCount || 0);
+        }, 0);
+
+        const totalAlertUnits = enriched.reduce(function (acc, e) {
+          return acc + (e.alertCount || 0);
+        }, 0);
+
+        const reroutePct = totalUnits > 0
+          ? ((totalRerouteUnits / totalUnits) * 100).toFixed(1)
+          : "0.0";
+
+        const highRisk = enriched.filter(function (e) {
+          return e.rerouteCount > 0 || e.alertCount > 0;
+        });
+
+        const watchListOnly = enriched.filter(function (e) {
+          return e.alertCount > 0 && e.rerouteCount === 0;
+        });
+
+        // Sort by severity
+        const sortedByMax = enriched.slice().sort(function (a, b) {
+          const av = a.maxP || 0;
+          const bv = b.maxP || 0;
+          return bv - av;
+        });
+
+        const topReroute = sortedByMax.filter(function (e) {
+          return e.rerouteCount > 0;
+        }).slice(0, 10);
+
+        const topWatch = sortedByMax.filter(function (e) {
+          return e.alertCount > 0 && e.rerouteCount === 0;
+        }).slice(0, 10);
+
+        metricTotalUnits.textContent = totalUnits.toString();
+        metricRerouteUnits.textContent = totalRerouteUnits.toString() + " (" + reroutePct + "%)";
+        metricHighRisk.textContent = highRisk.length.toString();
+        metricWatchList.textContent = watchListOnly.length.toString();
+
+        // Executive description
+        if (totalUnits === 0) {
+          execSub.textContent = "No corridor units detected in current snapshot.";
+          execText1.textContent =
+            "The current corridor_state snapshot contains zero rows. The geo/conflict pipeline may not have " +
+            "produced a calibrated forecast. Verify the upstream input data and rerun the nightly task.";
+          execText2.textContent = "";
+          execNumbers.textContent = "";
+        } else {
+          execSub.textContent = "Snapshot loaded and calibrated for the current 12-month horizon.";
+
+          execText1.textContent =
+            "The current calibrated snapshot covers " + formatUnits(totalUnits) + ", with " +
+            totalRerouteUnits.toString() + " units flagged for reroute and " +
+            totalAlertUnits.toString() + " units on alert / hedge. " +
+            "High-risk corridors are those with any reroute or alert / hedge assignment.";
+
+          execText2.textContent =
+            "This mitigation posture is derived from the isotonic-calibrated conflict probabilities " +
+            "and per-archetype thresholds. Reroute signals indicate corridors where exposure should " +
+            "be actively re-routed or suspended; alert / hedge signals indicate corridors for " +
+            "tight monitoring, hedging, or contingency planning.";
+
+          execNumbers.textContent =
+            "High-risk corridors: " + highRisk.length.toString() + " · " +
+            "Watch-list (alert / hedge, no reroute): " + watchListOnly.length.toString() + " · " +
+            "Reroute coverage: " + reroutePct + "% of all corridor-units.";
+        }
+
+        // Reroute list
+        rerouteList.innerHTML = "";
+        if (topReroute.length === 0) {
+          rerouteIntro.textContent = "No corridors currently have units assigned to reroute.";
+        } else {
+          rerouteIntro.textContent =
+            "The corridors below have the largest combination of reroute footprint and calibrated " +
+            "conflict probability.";
+          topReroute.forEach(function (c) {
+            const li = document.createElement("li");
+            const label = formatCorridorLabel(c.key);
+            const maxPStr = c.maxPDisplay || "n/a";
+            const meanPStr = c.meanPDisplay || "n/a";
+            const exposure = formatUnits(c.totalRows);
+            const rerouteUnits = c.rerouteCount.toString();
+            const actionLabel = describePrimaryAction(c.primaryAction);
+            li.innerHTML =
+              "<strong>" + label + "</strong>" +
+              " – " + exposure + " in scope; " +
+              "max p(event) " + maxPStr + ", mean " + meanPStr + "; " +
+              rerouteUnits + " unit(s) assigned to <span class=\"gc-tag reroute\"><strong>reroute</strong></span>" +
+              " (primary action: " + actionLabel + ").";
+            rerouteList.appendChild(li);
+          });
+        }
+
+        // Watch-list
+        watchList.innerHTML = "";
+        if (topWatch.length === 0) {
+          watchIntro.textContent = "No corridors currently flagged solely for alert / hedge (without reroute).";
+        } else {
+          watchIntro.textContent =
+            "These corridors are on the watch-list, with elevated probability but no reroute requirement yet.";
+          topWatch.forEach(function (c) {
+            const li = document.createElement("li");
+            const label = formatCorridorLabel(c.key);
+            const maxPStr = c.maxPDisplay || "n/a";
+            const meanPStr = c.meanPDisplay || "n/a";
+            const exposure = formatUnits(c.totalRows);
+            const alertUnits = c.alertCount.toString();
+            li.innerHTML =
+              "<strong>" + label + "</strong>" +
+              " – " + exposure + " in scope; " +
+              "max p(event) " + maxPStr + ", mean " + meanPStr + "; " +
+              alertUnits + " unit(s) on <span class=\"gc-tag watch\"><strong>alert / hedge</strong></span>" +
+              " with no current reroute requirement.";
+            watchList.appendChild(li);
+          });
+        }
+
+      } catch (err) {
+        console.error(err);
+        setStatus("error", "Error loading corridor_state");
+        execSub.textContent = "Error loading corridor_state.latest.json; see console and nightly logs.";
+        execText1.textContent =
+          "The mitigation brief could not be generated because the corridor_state snapshot " +
+          "failed to load or parse. Inspect the worker logs and the geo/conflict nightly pipeline.";
+        execText2.textContent = "";
+        execNumbers.textContent = "";
+        rerouteIntro.textContent = "Error loading corridor_state.latest.json.";
+        watchIntro.textContent = "Error loading corridor_state.latest.json.";
+        rerouteList.innerHTML = "";
+        watchList.innerHTML = "";
+      }
+    })();
+  </script>
+</body>
+</html>

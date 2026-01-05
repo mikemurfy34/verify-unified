@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sovereign Intelligence Pilot – Geo Conflict Corridors</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./dashboard.css" />
+  <style>
+    :root {
+      --gc-bg-soft: #f5f5f7;
+      --gc-border-subtle: #e0e0e6;
+      --gc-accent: #2563eb;
+      --gc-accent-soft: rgba(37, 99, 235, 0.08);
+      --gc-danger: #b91c1c;
+      --gc-ok: #15803d;
+      --gc-text-muted: #555;
+      --gc-chip-bg: #eef1f8;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #f9fafb;
+    }
+
+    .gc-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gc-header {
+      padding: 1.25rem 1.75rem 0.75rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 60%),
+                  radial-gradient(circle at top right, rgba(129,140,248,0.18), transparent 55%),
+                  #020617;
+    }
+
+    .gc-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .gc-title-block h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .gc-title-block p {
+      margin: 0.15rem 0 0;
+      font-size: 0.85rem;
+      color: #cbd5f5;
+    }
+
+    .gc-header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-end;
+    }
+
+    .gc-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 0.3rem 0.8rem;
+      font-size: 0.8rem;
+      background: rgba(15,23,42,0.8);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .gc-btn span.icon {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .gc-btn-primary {
+      border-color: var(--gc-accent);
+      background: linear-gradient(135deg, var(--gc-accent), #4f46e5);
+      color: #f9fafb;
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.4), 0 10px 25px rgba(37,99,235,0.5);
+    }
+
+    .gc-subheader {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .gc-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: rgba(15,23,42,0.75);
+      font-size: 0.78rem;
+    }
+
+    .gc-chip strong {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .gc-chip.ok {
+      border-color: rgba(22,163,74,0.7);
+      color: #bbf7d0;
+    }
+
+    .gc-chip.ok .dot {
+      background: var(--gc-ok);
+    }
+
+    .gc-chip.error {
+      border-color: rgba(248,113,113,0.7);
+      color: #fecaca;
+    }
+
+    .gc-chip .dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: #64748b;
+    }
+
+    .gc-main {
+      flex: 1;
+      padding: 1.4rem 1.75rem 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(94,234,212,0.16), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(56,189,248,0.16), transparent 55%),
+        linear-gradient(to bottom, #020617, #020617 40%, #020617);
+    }
+
+    .gc-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 960px) {
+      .gc-main {
+        padding: 1rem 0.9rem 1.4rem;
+      }
+      .gc-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+    }
+
+    .gc-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(148,163,184,0.26);
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.8), rgba(15,23,42,0.96));
+      padding: 0.95rem 1rem 0.9rem;
+      box-shadow:
+        0 18px 40px rgba(15,23,42,0.85),
+        0 0 0 1px rgba(15,23,42,0.65);
+    }
+
+    .gc-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .gc-card-header h2 {
+      margin: 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .gc-card-header span.sub {
+      font-size: 0.79rem;
+      color: #9ca3af;
+    }
+
+    .gc-metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .gc-metric-pill {
+      flex: 0 0 auto;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 0.8rem;
+      padding: 0.45rem 0.7rem;
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.35);
+      min-width: 8rem;
+    }
+
+    .gc-metric-pill label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+    }
+
+    .gc-metric-pill span.val {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .gc-metric-pill span.val-strong {
+      color: #f97316;
+    }
+
+    .gc-metric-pill span.val-ok {
+      color: #22c55e;
+    }
+
+    .gc-table-wrap {
+      border-radius: 0.75rem;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.75), rgba(15,23,42,0.98));
+      overflow: hidden;
+    }
+
+    table.gc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.76rem;
+    }
+
+    table.gc-table thead {
+      background: rgba(15,23,42,0.96);
+    }
+
+    table.gc-table th,
+    table.gc-table td {
+      padding: 0.45rem 0.6rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(30,41,59,0.9);
+      white-space: nowrap;
+    }
+
+    table.gc-table th {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.68rem;
+      color: #9ca3af;
+    }
+
+    table.gc-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.gc-table tbody tr:nth-child(even) {
+      background: rgba(15,23,42,0.86);
+    }
+
+    table.gc-table tbody tr:nth-child(odd) {
+      background: rgba(15,23,42,0.98);
+    }
+
+    table.gc-table tbody tr.gc-risk-high {
+      background: radial-gradient(circle at left, rgba(248,113,113,0.16), rgba(15,23,42,0.98));
+    }
+
+    table.gc-table tbody tr.gc-risk-high td:first-child::before {
+      content: "●";
+      color: #fb7185;
+      margin-right: 0.35rem;
+      font-size: 0.7rem;
+    }
+
+    .gc-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.12rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(30,64,175,0.35);
+      border: 1px solid rgba(129,140,248,0.7);
+      font-size: 0.72rem;
+      color: #e0e7ff;
+    }
+
+    .gc-pill-soft {
+      background: rgba(15,23,42,0.8);
+      border-color: rgba(148,163,184,0.5);
+      color: #e5e7eb;
+    }
+
+    .gc-pill-danger {
+      background: rgba(248,113,113,0.2);
+      border-color: rgba(248,113,113,0.7);
+      color: #fecaca;
+    }
+
+    .gc-muted {
+      color: #9ca3af;
+      font-size: 0.75rem;
+    }
+
+    .gc-footer-note {
+      margin-top: 0.5rem;
+      font-size: 0.74rem;
+      color: #9ca3af;
+    }
+
+    .gc-footer-note strong {
+      color: #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="gc-shell">
+    <header class="gc-header">
+      <div class="gc-header-top">
+        <div class="gc-title-block">
+          <h1>Geo Conflict Corridors</h1>
+          <p>Sovereign Intelligence Pilot &mdash; calibrated 12-month conflict corridor state (T+1)</p>
+        </div>
+        <div class="gc-header-actions">
+          <a href="./operator-portal.html" class="gc-btn">
+            <span class="icon">⟵</span>
+            <span>Back to Operator Portal</span>
+          </a>
+          <a href="./proof.html" class="gc-btn">
+            <span class="icon">☑</span>
+            <span>View Unified Proofs</span>
+          </a>
+        </div>
+      </div>
+      <div class="gc-subheader">
+        <div id="gc-status-chip" class="gc-chip">
+          <span class="dot"></span>
+          <span><strong>Status</strong> <span id="gc-status-text">Loading&hellip;</span></span>
+        </div>
+        <div class="gc-chip">
+          <span class="dot"></span>
+          <span><strong>Snapshot</strong> <span id="gc-meta-text">Awaiting corridor_state.latest.json&hellip;</span></span>
+        </div>
+        <div class="gc-chip">
+          <span class="dot"></span>
+          <span><strong>Columns</strong>
+            <span id="gc-columns-text" class="gc-muted">group / prob / action &mdash; pending</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <main class="gc-main">
+      <div class="gc-grid">
+        <!-- Left: High-risk corridors -->
+        <section class="gc-card">
+          <div class="gc-card-header">
+            <h2>High-Risk Corridors</h2>
+            <span class="sub" id="gc-highrisk-sub">Awaiting data&hellip;</span>
+          </div>
+
+          <div class="gc-metrics-row">
+            <div class="gc-metric-pill">
+              <label>Total units</label>
+              <span class="val" id="gc-metric-total-units">0</span>
+            </div>
+            <div class="gc-metric-pill">
+              <label>Units flagged for reroute</label>
+              <span class="val val-strong" id="gc-metric-reroute-units">0 (0.0%)</span>
+            </div>
+            <div class="gc-metric-pill">
+              <label>High-risk corridors</label>
+              <span class="val val-strong" id="gc-metric-highrisk-count">0</span>
+            </div>
+          </div>
+
+          <div class="gc-table-wrap">
+            <table class="gc-table" id="gc-table-top">
+              <thead>
+                <tr>
+                  <th>Corridor (iso3)</th>
+                  <th>Units</th>
+                  <th>Mean p(event)</th>
+                  <th>Max p(event)</th>
+                  <th>Units: reroute</th>
+                  <th>Units: alert/hedge</th>
+                  <th>Primary action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="7" class="gc-muted">Waiting for corridor_state.latest.json&hellip;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="gc-footer-note">
+            <strong>Definition.</strong> High-risk corridors are those with any units assigned to
+            <span class="gc-pill gc-pill-danger"><span>reroute</span></span> or
+            <span class="gc-pill"><span>alert/hedge</span></span>, sorted by max calibrated conflict probability.
+          </div>
+        </section>
+
+        <!-- Right: All corridors -->
+        <section class="gc-card">
+          <div class="gc-card-header">
+            <h2>All Corridors</h2>
+            <span class="sub">Full calibrated corridor universe (ISO-3 grouped view)</span>
+          </div>
+
+          <div class="gc-table-wrap" style="max-height: 24rem; overflow: auto;">
+            <table class="gc-table" id="gc-table-all">
+              <thead>
+                <tr>
+                  <th>Corridor (iso3)</th>
+                  <th>Units</th>
+                  <th>Mean p(event)</th>
+                  <th>Max p(event)</th>
+                  <th>Units: reroute</th>
+                  <th>Units: alert/hedge</th>
+                  <th>Primary action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="7" class="gc-muted">Waiting for corridor_state.latest.json&hellip;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="gc-footer-note">
+            <strong>Note.</strong> This view is driven directly by
+            <code>status/geo/conflict/v1/corridor_state.latest.json</code> (T+1 product of the geo/conflict v1 pipeline).
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (async function () {
+      const statusChip = document.getElementById("gc-status-chip");
+      const statusText = document.getElementById("gc-status-text");
+      const metaText   = document.getElementById("gc-meta-text");
+      const colsText   = document.getElementById("gc-columns-text");
+      const highriskSub = document.getElementById("gc-highrisk-sub");
+
+      const metricTotalUnits  = document.getElementById("gc-metric-total-units");
+      const metricReroute     = document.getElementById("gc-metric-reroute-units");
+      const metricHighriskCnt = document.getElementById("gc-metric-highrisk-count");
+
+      const tableTopBody = document.querySelector("#gc-table-top tbody");
+      const tableAllBody = document.querySelector("#gc-table-all tbody");
+
+      function setStatus(kind, text) {
+        statusText.textContent = text;
+        statusChip.classList.remove("ok", "error");
+        if (kind === "ok") {
+          statusChip.classList.add("ok");
+        } else if (kind === "error") {
+          statusChip.classList.add("error");
+        }
+      }
+
+      function percent(num) {
+        if (typeof num !== "number" || !isFinite(num)) return "";
+        return (num * 100).toFixed(1) + "%";
+      }
+
+      function safeNumber(v) {
+        return typeof v === "number" && isFinite(v) ? v : null;
+      }
+
+      function createRow(corridor, highlight) {
+        const tr = document.createElement("tr");
+        if (highlight) tr.classList.add("gc-risk-high");
+        tr.innerHTML = [
+          corridor.key || "",
+          corridor.totalRows.toString(),
+          corridor.meanPDisplay,
+          corridor.maxPDisplay,
+          corridor.rerouteCount.toString(),
+          corridor.alertCount.toString(),
+          corridor.primaryAction
+        ].map((cell, idx) => "<td>" + cell + "</td>").join("");
+        return tr;
+      }
+
+      try {
+        const res = await fetch("status/geo/conflict/v1/corridor_state.latest.json", {
+          cache: "no-store"
+        });
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status + " " + res.statusText);
+        }
+
+        const data = await res.json();
+        const status = data.status || "unknown";
+        const generatedAt = data.generated_at_utc || "unknown";
+        const groupCol = data.group_column || "(none)";
+        const probCol  = data.prob_column || "(none)";
+        const actionCol = data.action_column || "(none)";
+        const corridors = Array.isArray(data.corridors) ? data.corridors : [];
+
+        let localStr = "";
+        try {
+          const d = new Date(generatedAt);
+          if (!isNaN(d.getTime())) {
+            localStr = d.toLocaleString();
+          }
+        } catch (e) {
+          /* noop */
+        }
+
+        metaText.textContent =
+          "Generated: " + generatedAt +
+          (localStr ? " (local: " + localStr + ")" : "") +
+          " · Corridors: " + corridors.length.toString();
+
+        colsText.textContent =
+          "group: " + groupCol +
+          " · prob: " + probCol +
+          " · action: " + actionCol;
+
+        if (status !== "ok") {
+          setStatus("error", status + (data.message ? " – " + data.message : ""));
+          highriskSub.textContent = "Non-OK corridor_state status; see pipeline logs.";
+          tableTopBody.innerHTML = "<tr><td colspan=\"7\" class=\"gc-muted\">Status: " + status + "</td></tr>";
+          tableAllBody.innerHTML = "<tr><td colspan=\"7\" class=\"gc-muted\">Status: " + status + "</td></tr>";
+          return;
+        } else {
+          setStatus("ok", "OK · corridor_state.latest.json loaded");
+        }
+
+        // Enrich corridors with metrics
+        const enriched = corridors.map(function (c) {
+          const prob = c.prob_summary || {};
+          const actions = c.actions || {};
+
+          const maxP = safeNumber(prob.max);
+          const meanP = safeNumber(prob.mean);
+          const rowCount = typeof c.row_count === "number" ? c.row_count : 0;
+
+          const rerouteCount = actions.reroute ? Number(actions.reroute) : 0;
+          const alertCount = (actions.alert ? Number(actions.alert) : 0) +
+                             (actions.hedge ? Number(actions.hedge) : 0);
+
+          const actionKeys = Object.keys(actions);
+          let primaryAction = "_none";
+          if (actionKeys.length > 0) {
+            primaryAction = actionKeys.sort(function (a, b) {
+              return (Number(actions[b]) || 0) - (Number(actions[a]) || 0);
+            })[0];
+          }
+
+          return {
+            raw: c,
+            key: c.key,
+            totalRows: rowCount,
+            maxP: maxP,
+            meanP: meanP,
+            maxPDisplay: maxP !== null ? percent(maxP) : "",
+            meanPDisplay: meanP !== null ? percent(meanP) : "",
+            rerouteCount: rerouteCount,
+            alertCount: alertCount,
+            primaryAction: primaryAction
+          };
+        });
+
+        // Sort by max probability descending for high-risk view
+        enriched.sort(function (a, b) {
+          const av = a.maxP || 0;
+          const bv = b.maxP || 0;
+          return bv - av;
+        });
+
+        const highRisk = enriched.filter(function (e) {
+          return e.rerouteCount > 0 || e.alertCount > 0;
+        }).slice(0, 32);
+
+        const totalUnits = enriched.reduce(function (acc, e) {
+          return acc + (e.totalRows || 0);
+        }, 0);
+
+        const totalRerouteUnits = enriched.reduce(function (acc, e) {
+          return acc + (e.rerouteCount || 0);
+        }, 0);
+
+        const reroutePct = totalUnits > 0
+          ? ((totalRerouteUnits / totalUnits) * 100).toFixed(1)
+          : "0.0";
+
+        metricTotalUnits.textContent = totalUnits.toString();
+        metricReroute.textContent = totalRerouteUnits.toString() + " (" + reroutePct + "%)";
+        metricHighriskCnt.textContent = highRisk.length.toString();
+
+        if (highRisk.length === 0) {
+          highriskSub.textContent = "No corridors currently flagged for reroute / alert / hedge.";
+        } else {
+          highriskSub.textContent = "Top " + highRisk.length.toString() + " corridors ranked by max calibrated conflict probability.";
+        }
+
+        // Render High-risk table
+        tableTopBody.innerHTML = "";
+        highRisk.forEach(function (c) {
+          const highlight = c.rerouteCount > 0;
+          tableTopBody.appendChild(createRow(c, highlight));
+        });
+        if (highRisk.length === 0) {
+          tableTopBody.innerHTML = "<tr><td colspan=\"7\" class=\"gc-muted\">No high-risk corridors in current snapshot.</td></tr>";
+        }
+
+        // Render All corridors table
+        tableAllBody.innerHTML = "";
+        enriched.forEach(function (c) {
+          const highlight = c.rerouteCount > 0;
+          tableAllBody.appendChild(createRow(c, highlight));
+        });
+        if (enriched.length === 0) {
+          tableAllBody.innerHTML = "<tr><td colspan=\"7\" class=\"gc-muted\">No corridor rows in current snapshot.</td></tr>";
+        }
+
+      } catch (err) {
+        console.error(err);
+        setStatus("error", "Error loading corridor_state");
+        highriskSub.textContent = "Error loading corridor_state.latest.json; see console / logs.";
+        tableTopBody.innerHTML = "<tr><td colspan=\"7\" class=\"gc-muted\">Error loading corridor_state.latest.json: " +
+          (err && err.message ? err.message : err) + "</td></tr>";
+        tableAllBody.innerHTML = "<tr><td colspan=\"7\" class=\"gc-muted\">Error loading corridor_state.latest.json: " +
+          (err && err.message ? err.message : err) + "</td></tr>";
+      }
+    })();
+  </script>
+</body>
+</html>

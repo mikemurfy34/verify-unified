@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Verify Unified – Proof Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./dashboard.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-title">Verify Unified</span>
+        <span class="brand-subtitle">Proof viewer</span>
+      </div>
+      <nav class="nav">
+        <a href="./index.html">Overview</a>
+        <a href="./geo-conflict.html">Geo conflict v1</a>
+        <a href="./proof.html" class="active">Proofs</a>
+        <a href="./logs.html">Logs</a>
+        <a href="./releases.html">Releases</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="card">
+      <h1>Unified proof viewer</h1>
+      <p>
+        Load a unified proof JSON (for example
+        <code>proofs/unified/corridor_state.proof.json</code>), inspect its meta,
+        signature block, referenced assets, and call the <code>/verify</code>
+        endpoint to confirm signature and reference status.
+      </p>
+      <form class="inline-form" id="proofLoaderForm">
+        <label class="field">
+          <span class="field-label">Proof JSON path</span>
+          <input id="proofPath" type="text" spellcheck="false" autocomplete="off">
+        </label>
+        <button id="loadProofBtn" type="submit">Load proof</button>
+        <a id="rawProofLink" class="link-muted" href="#" target="_blank" rel="noopener noreferrer">
+          Open raw proof
+        </a>
+      </form>
+      <div id="statusText" class="status status-info">
+        No proof loaded yet.
+      </div>
+    </section>
+
+    <section class="grid grid-2">
+      <section class="card">
+        <h2>Meta</h2>
+        <table class="table">
+          <tbody id="metaTableBody"></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Signature</h2>
+        <table class="table">
+          <tbody id="sigTableBody"></tbody>
+        </table>
+      </section>
+    </section>
+
+    <section class="card">
+      <h2>References</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Path</th>
+            <th>Kind</th>
+            <th>Hash</th>
+          </tr>
+        </thead>
+        <tbody id="refsBody"></tbody>
+      </table>
+    </section>
+
+    <section class="grid grid-2">
+      <section class="card">
+        <h2>Verify via worker</h2>
+        <p>
+          This sends the loaded proof JSON to the <code>/verify</code> endpoint and shows
+          the verifier response (schema, signature, and refs checks). The API key is used
+          only for that request.
+        </p>
+        <button id="verifyBtn" type="button">Verify now</button>
+        <p id="verifySummary" class="status status-info">
+          Not verified yet.
+        </p>
+        <pre id="verifyDetails" class="code-block"></pre>
+      </section>
+
+      <section class="card">
+        <h2>Verifier settings</h2>
+        <form id="settingsForm">
+          <label class="field">
+            <span class="field-label">Verify URL</span>
+            <input id="verifyUrl" type="text" spellcheck="false" autocomplete="off" placeholder="/verify">
+          </label>
+          <label class="field">
+            <span class="field-label">API key (stored locally only)</span>
+            <input id="apiKey" type="password" autocomplete="off">
+          </label>
+          <button id="saveSettingsBtn" type="submit">Save settings</button>
+          <p class="hint">
+            Settings are stored only in this browser via <code>localStorage</code>.
+          </p>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var defaultProofPath = "/proofs/unified/corridor_state.proof.json";
+
+      var proofPathInput   = document.getElementById("proofPath");
+      var loadButton       = document.getElementById("loadProofBtn");
+      var statusEl         = document.getElementById("statusText");
+      var metaTableBody    = document.getElementById("metaTableBody");
+      var sigTableBody     = document.getElementById("sigTableBody");
+      var refsBody         = document.getElementById("refsBody");
+      var rawLink          = document.getElementById("rawProofLink");
+      var verifyButton     = document.getElementById("verifyBtn");
+      var verifySummary    = document.getElementById("verifySummary");
+      var verifyDetails    = document.getElementById("verifyDetails");
+      var verifyUrlInput   = document.getElementById("verifyUrl");
+      var apiKeyInput      = document.getElementById("apiKey");
+      var saveSettingsBtn  = document.getElementById("saveSettingsBtn");
+      var proofLoaderForm  = document.getElementById("proofLoaderForm");
+      var settingsForm     = document.getElementById("settingsForm");
+
+      var storagePrefix = "verifyUnified.";
+      var settings = {
+        verifyUrl: window.localStorage.getItem(storagePrefix + "verifyUrl") || "/verify",
+        apiKey:    window.localStorage.getItem(storagePrefix + "apiKey")    || ""
+      };
+
+      verifyUrlInput.value  = settings.verifyUrl;
+      apiKeyInput.value     = settings.apiKey;
+      proofPathInput.value  = defaultProofPath;
+
+      var currentProof     = null;
+      var currentProofPath = defaultProofPath;
+
+      function setStatus(text, level) {
+        statusEl.textContent = text;
+        statusEl.classList.remove("status-info", "status-ok", "status-error", "status-warn");
+        if (level === "ok") {
+          statusEl.classList.add("status-ok");
+        } else if (level === "error") {
+          statusEl.classList.add("status-error");
+        } else if (level === "warn") {
+          statusEl.classList.add("status-warn");
+        } else {
+          statusEl.classList.add("status-info");
+        }
+      }
+
+      function clearElement(el) {
+        while (el.firstChild) {
+          el.removeChild(el.firstChild);
+        }
+      }
+
+      function renderProof() {
+        clearElement(metaTableBody);
+        clearElement(sigTableBody);
+        clearElement(refsBody);
+        rawLink.removeAttribute("href");
+
+        if (!currentProof) {
+          setStatus("No proof loaded yet.", "info");
+          return;
+        }
+
+        setStatus("Proof loaded.", "ok");
+        currentProofPath = proofPathInput.value.trim() || defaultProofPath;
+        rawLink.href     = currentProofPath;
+
+        var meta = currentProof.meta || {};
+        var sig  = currentProof.sig  || {};
+        var refs = Array.isArray(currentProof.refs) ? currentProof.refs : [];
+
+        var metaKeys = Object.keys(meta);
+        if (metaKeys.length === 0) {
+          var tr = document.createElement("tr");
+          var td = document.createElement("td");
+          td.colSpan   = 2;
+          td.textContent = "No meta fields present.";
+          tr.appendChild(td);
+          metaTableBody.appendChild(tr);
+        } else {
+          metaKeys.forEach(function (key) {
+            var tr    = document.createElement("tr");
+            var keyTd = document.createElement("td");
+            keyTd.textContent = key;
+            var valTd = document.createElement("td");
+            var value = meta[key];
+            if (value !== null && typeof value === "object") {
+              valTd.textContent = JSON.stringify(value);
+            } else {
+              valTd.textContent = String(value);
+            }
+            tr.appendChild(keyTd);
+            tr.appendChild(valTd);
+            metaTableBody.appendChild(tr);
+          });
+        }
+
+        var sigPairs = [
+          ["alg",       sig.alg],
+          ["algorithm", sig.algorithm],
+          ["kid",       sig.kid],
+          ["hash",      sig.hash],
+          ["publicKey", sig.publicKey],
+          ["sig",       sig.sig]
+        ];
+        var anySig = false;
+        sigPairs.forEach(function (pair) {
+          var key   = pair[0];
+          var value = pair[1];
+          if (value === undefined || value === null || value === "") {
+            return;
+          }
+          anySig = true;
+          var tr    = document.createElement("tr");
+          var keyTd = document.createElement("td");
+          keyTd.textContent = key;
+          var valTd = document.createElement("td");
+          valTd.textContent = String(value);
+          tr.appendChild(keyTd);
+          tr.appendChild(valTd);
+          sigTableBody.appendChild(tr);
+        });
+        if (!anySig) {
+          var trSig = document.createElement("tr");
+          var tdSig = document.createElement("td");
+          tdSig.colSpan   = 2;
+          tdSig.textContent = "No sig block present.";
+          trSig.appendChild(tdSig);
+          sigTableBody.appendChild(trSig);
+        }
+
+        if (refs.length === 0) {
+          var trRefs = document.createElement("tr");
+          var tdRefs = document.createElement("td");
+          tdRefs.colSpan   = 4;
+          tdRefs.textContent = "No refs present.";
+          trRefs.appendChild(tdRefs);
+          refsBody.appendChild(trRefs);
+        } else {
+          refs.forEach(function (ref, index) {
+            var tr = document.createElement("tr");
+
+            var indexTd = document.createElement("td");
+            indexTd.textContent = String(index + 1);
+            tr.appendChild(indexTd);
+
+            var pathTd = document.createElement("td");
+            if (ref && ref.path) {
+              var a = document.createElement("a");
+              a.href   = ref.path;
+              a.textContent = ref.path;
+              a.target = "_blank";
+              a.rel    = "noopener noreferrer";
+              pathTd.appendChild(a);
+            } else {
+              pathTd.textContent = "(no path)";
+            }
+            tr.appendChild(pathTd);
+
+            var kindTd = document.createElement("td");
+            kindTd.textContent = ref.kind || ref.type || "";
+            tr.appendChild(kindTd);
+
+            var hashTd = document.createElement("td");
+            hashTd.textContent = ref.hash || "";
+            tr.appendChild(hashTd);
+
+            refsBody.appendChild(tr);
+          });
+        }
+      }
+
+      function loadProof(path) {
+        var finalPath = (path && path.trim()) || defaultProofPath;
+        setStatus("Loading proof from " + finalPath + "...", "info");
+        fetch(finalPath, { cache: "no-store" })
+          .then(function (res) {
+            if (!res.ok) {
+              throw new Error("HTTP " + res.status + " " + res.statusText);
+            }
+            return res.json();
+          })
+          .then(function (json) {
+            currentProof     = json;
+            currentProofPath = finalPath;
+            renderProof();
+            verifySummary.textContent = "Not verified yet.";
+            verifyDetails.textContent = "";
+          })
+          .catch(function (err) {
+            console.error(err);
+            currentProof = null;
+            renderProof();
+            setStatus("Failed to load proof: " + err.message, "error");
+          });
+      }
+
+      function verifyViaWorker() {
+        if (!currentProof) {
+          setStatus("Load a proof before running verification.", "warn");
+          return;
+        }
+
+        var verifyUrl = (verifyUrlInput.value || "").trim() || "/verify";
+        var apiKey    = (apiKeyInput.value  || "").trim();
+
+        verifySummary.textContent = "Verifying via " + verifyUrl + "...";
+        verifyDetails.textContent = "";
+        setStatus("Calling verifier...", "info");
+
+        var headers = {
+          "Content-Type": "application/json"
+        };
+        if (apiKey) {
+          headers["x-api-key"] = apiKey;
+        }
+
+        fetch(verifyUrl, {
+          method:  "POST",
+          headers: headers,
+          body:    JSON.stringify(currentProof)
+        })
+          .then(function (res) {
+            return res.text().then(function (text) {
+              return { res: res, text: text };
+            });
+          })
+          .then(function (pair) {
+            var res  = pair.res;
+            var text = pair.text;
+            var payload;
+            try {
+              payload = JSON.parse(text);
+            } catch (e) {
+              payload = { raw: text };
+            }
+
+            var level = res.ok ? "ok" : "error";
+            setStatus("Verifier responded with HTTP " + res.status + ".", level);
+
+            if (payload && typeof payload === "object") {
+              var sigOk    = payload.sig_ok;
+              if (sigOk === undefined) sigOk = payload.sigOk;
+              var refsOk   = payload.refs_ok;
+              if (refsOk === undefined) refsOk = payload.refsOk;
+              var schemaOk = payload.schema_ok;
+              if (schemaOk === undefined) schemaOk = payload.schemaOk;
+
+              var parts = [];
+              if (schemaOk !== undefined) parts.push("schema=" + schemaOk);
+              if (sigOk    !== undefined) parts.push("sig="    + sigOk);
+              if (refsOk   !== undefined) parts.push("refs="   + refsOk);
+
+              if (parts.length === 0) {
+                verifySummary.textContent = "Verifier result: see details below.";
+              } else {
+                verifySummary.textContent = "Verifier result: " + parts.join(", ");
+              }
+              verifyDetails.textContent = JSON.stringify(payload, null, 2);
+            } else {
+              verifySummary.textContent = "Verifier returned non JSON response.";
+              verifyDetails.textContent = String(text);
+            }
+          })
+          .catch(function (err) {
+            console.error(err);
+            setStatus("Verification call failed: " + err.message, "error");
+            verifySummary.textContent = "Verification error.";
+            verifyDetails.textContent = err.stack || err.message;
+          });
+      }
+
+      function saveSettings() {
+        var verifyUrl = (verifyUrlInput.value || "").trim() || "/verify";
+        var apiKey    = (apiKeyInput.value  || "").trim();
+        window.localStorage.setItem(storagePrefix + "verifyUrl", verifyUrl);
+        window.localStorage.setItem(storagePrefix + "apiKey",  apiKey);
+        setStatus("Verifier settings saved.", "ok");
+      }
+
+      proofLoaderForm.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        loadProof(proofPathInput.value);
+      });
+
+      loadButton.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        loadProof(proofPathInput.value);
+      });
+
+      verifyButton.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        verifyViaWorker();
+      });
+
+      settingsForm.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        saveSettings();
+      });
+
+      saveSettingsBtn.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        saveSettings();
+      });
+
+      loadProof(defaultProofPath);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Codex Proof Health</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body{font-family:system-ui,Segoe UI,Arial;margin:24px}
+    .card{border:1px solid #ddd;border-radius:12px;padding:16px;max-width:720px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+    h1{margin:0 0 12px}
+    .row{display:flex;gap:16px;flex-wrap:wrap}
+    .pill{padding:8px 12px;border-radius:999px;background:#f5f5f5}
+    table{border-collapse:collapse;margin-top:12px}
+    td,th{border:1px solid #ddd;padding:6px 10px}
+    a{color:#0b5}
+    small{color:#666}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Codex Proof Health</h1>
+    <div id="summary" class="row"></div>
+
+    <table>
+      <tbody id="details"></tbody>
+    </table>
+
+    <p style="margin-top:16px">
+      Links:
+      <a id="finalized" target="_blank">finalizedProof.json</a> ·
+      <a id="unified" target="_blank">unifiedProof.json</a> ·
+      <a id="dashboard" target="_blank">run dashboard</a> ·
+      <a id="transcript" target="_blank">transcript</a>
+    </p>
+    <small id="ts"></small>
+  </div>
+
+  <script>
+    (async () => {
+      const statusUrl = "/status";
+      const baseRaw   = "https://raw.githubusercontent.com/mikemurfy34/codex-v5/main";
+      const r = await fetch(statusUrl);
+      const s = await r.json();
+
+      const pills = [
+        ["ok", s.ok ? "OK ✅" : "Fail ❌"],
+        ["streak", `Streak: ${s.ok_streak ?? 0}`],
+        ["window", `Window: ${s.window_days ?? 30}d`],
+        ["runs", `Runs: ${s.total_runs ?? 0}`],
+        ["okruns", `OK: ${s.ok_runs ?? 0}`],
+        ["fails", `Fail: ${s.fail_runs ?? 0}`]
+      ];
+
+      document.getElementById("summary").innerHTML = pills
+        .map(([_,txt]) => `<div class="pill">${txt}</div>`).join("");
+
+      const rows = [
+        ["Last Run", s.last_run_ts || "-"],
+        ["Latest KID", s.latest_kid || "-"],
+        ["Finalized Entries", s.latest_finalized_size ?? "-"],
+        ["Unified Entries", s.latest_unified_size ?? "-"]
+      ];
+      document.getElementById("details").innerHTML = rows
+        .map(([k,v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("");
+
+      document.getElementById("finalized").href = `${baseRaw}/proofs/finalized/finalizedProof.json`;
+      document.getElementById("unified").href   = `${baseRaw}/proofs/unified/unifiedProof.json`;
+      document.getElementById("dashboard").href = `${baseRaw}/runs/index.html`;
+      document.getElementById("transcript").href= "/transcript";
+
+      document.getElementById("ts").textContent = `Updated: ${new Date().toLocaleString()}`;
+    })();
+  </script>
+</body>
+</html>

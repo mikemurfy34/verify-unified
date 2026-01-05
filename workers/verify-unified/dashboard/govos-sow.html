@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Policy &amp; SoW Console - Sovereign Intelligence Pilot</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./dashboard.css" />
+  <style>
+    .page-root {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    .page-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .page-subtitle {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      max-width: 640px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .pill {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+    }
+    .card {
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: radial-gradient(circle at top left, rgba(96,165,250,0.10), rgba(15,23,42,0.98));
+      padding: 16px 16px 18px;
+      box-shadow: 0 18px 45px rgba(15,23,42,0.85);
+      margin-bottom: 18px;
+    }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .card-body {
+      font-size: 0.86rem;
+      color: #cbd5f5;
+      line-height: 1.5;
+    }
+    .json-block {
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.3);
+      background: rgba(15,23,42,0.92);
+      padding: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.78rem;
+      max-height: 340px;
+      overflow: auto;
+      white-space: pre;
+    }
+    .json-block.empty {
+      color: #9ca3af;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-root">
+    <a href="./operator-portal.html" class="back-link">
+      ← Back to Unified Operator Portal
+    </a>
+
+    <header class="page-header">
+      <div class="page-title">Policy &amp; SoW Console</div>
+      <div class="page-subtitle">
+        Pilot stub for the GovOS / AISDR Statement of Work console. In the full build,
+        this view will take a corridor and its verified proofs, then generate and track
+        program briefs, policy options, and SoW drafts through existing governance channels.
+      </div>
+      <div class="pill-row">
+        <span class="pill">Pilot stub</span>
+        <span class="pill">GovOS · SoW · policy</span>
+        <span class="pill">Corridor-aligned</span>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-title">Corridor context (raw preview)</div>
+      <div class="card-body">
+        This preview reads <code>/status/geo/conflict/v1/corridor_state.latest.json</code>
+        so SoW drafts can be grounded in the same corridor schema used by the Geopolitical
+        Risk Board and the Ocean &amp; Climate Divergence view.
+      </div>
+      <div id="sow-json" class="json-block empty">
+        Loading latest corridor state JSON ...
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">How this console will evolve</div>
+      <div class="card-body">
+        In a production deployment, this console will:
+        <ul>
+          <li>Let operators pick a corridor and link its latest proofs.</li>
+          <li>Trigger GovOS / AISDR SoW generation flows with clear audit trails.</li>
+          <li>Track the lifecycle of SoWs and policy directives across departments.</li>
+          <li>Provide a verifiable chain from signal → proof → SoW → directive.</li>
+        </ul>
+        For now, this stub confirms the routing and corridor alignment.
+      </div>
+    </section>
+  </div>
+
+  <script>
+  (async function() {
+    var container = document.getElementById("sow-json");
+    try {
+      var resp = await fetch("/status/geo/conflict/v1/corridor_state.latest.json", { cache: "no-store" });
+      if (!resp.ok) {
+        throw new Error("HTTP " + resp.status + " when fetching corridor_state.latest.json");
+      }
+      var data = await resp.json();
+      var pretty = JSON.stringify(data, null, 2);
+      container.textContent = pretty;
+      container.classList.remove("empty");
+    } catch (err) {
+      container.textContent = "Could not load corridor_state.latest.json (" + err.message + "). " +
+        "This is expected in some dev environments. Once the geo/conflict pipeline writes " +
+        "corridor_state.latest.json into the dashboard asset bundle, this view will reflect it.";
+      container.classList.add("empty");
+    }
+  })();
+  </script>
+</body>
+</html>

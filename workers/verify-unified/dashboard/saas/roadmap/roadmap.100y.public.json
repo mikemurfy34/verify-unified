@@ -1,0 +1,1609 @@
+{
+  "artifact": "roadmap-100y",
+  "version": "v1",
+  "ts": "2025-11-12T05:03:16.290Z",
+  "start_year": 2025,
+  "horizon_years": 100,
+  "epochs": [
+    {
+      "label": "2025-2034",
+      "start": 2025,
+      "end": 2034,
+      "themes": [
+        "Parity to Proofs",
+        "Edge Autonomy",
+        "Deterministic Agents",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2028,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2028,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2028,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2028,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2028,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2028,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2028,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2028,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2028,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2028,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2028,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2028,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2028,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2028,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2028,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2028,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2028,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2028,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 50
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2035-2044",
+      "start": 2035,
+      "end": 2044,
+      "themes": [
+        "Dominance & Scale",
+        "Edge Autonomy",
+        "Deterministic Agents",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2038,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2038,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2038,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2038,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2038,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2038,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2038,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2038,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2038,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2038,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2038,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2038,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2038,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2038,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2038,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2038,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2038,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2038,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2045-2054",
+      "start": 2045,
+      "end": 2054,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Deterministic Agents",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2048,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2048,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2048,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2048,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2048,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2048,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2048,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2048,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2048,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2048,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2048,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2048,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2048,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2048,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2048,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2048,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2048,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2048,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2055-2064",
+      "start": 2055,
+      "end": 2064,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Self-Healing Systems",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2058,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2058,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2058,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2058,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2058,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2058,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2058,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2058,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2058,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2058,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2058,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2058,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2058,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2058,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2058,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2058,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2058,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2058,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2065-2074",
+      "start": 2065,
+      "end": 2074,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Self-Healing Systems",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2068,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2068,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2068,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2068,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2068,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2068,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2068,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2068,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2068,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2068,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2068,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2068,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2068,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2068,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2068,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2068,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2068,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2068,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2075-2084",
+      "start": 2075,
+      "end": 2084,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Self-Healing Systems",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2078,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2078,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2078,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2078,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2078,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2078,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2078,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2078,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2078,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2078,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2078,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2078,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2078,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2078,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2078,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2078,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2078,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2078,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2085-2094",
+      "start": 2085,
+      "end": 2094,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Self-Healing Systems",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2088,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2088,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2088,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2088,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2088,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2088,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2088,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2088,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2088,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2088,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2088,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2088,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2088,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2088,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2088,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2088,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2088,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2088,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2095-2104",
+      "start": 2095,
+      "end": 2104,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Self-Healing Systems",
+        "Governed Autonomy"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2098,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2098,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2098,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2098,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2098,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2098,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2098,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2098,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2098,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2098,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2098,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2098,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2098,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2098,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2098,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2098,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2098,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2098,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2105-2114",
+      "start": 2105,
+      "end": 2114,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Self-Healing Systems",
+        "Quantum-Grade Governance"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2108,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2108,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2108,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2108,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2108,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2108,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2108,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2108,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2108,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2108,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2108,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2108,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2108,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2108,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2108,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2108,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2108,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2108,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    },
+    {
+      "label": "2115-2124",
+      "start": 2115,
+      "end": 2124,
+      "themes": [
+        "Dominance & Scale",
+        "Planetary Orchestration",
+        "Self-Healing Systems",
+        "Quantum-Grade Governance"
+      ],
+      "milestones": [
+        {
+          "id": "llm-core",
+          "deliver_by": 2118,
+          "kpi": {
+            "latency_p95_ms": 50,
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "function-calling",
+          "deliver_by": 2118,
+          "kpi": {
+            "doc_task_success_pct": 0.98
+          }
+        },
+        {
+          "id": "multimodal-vision",
+          "deliver_by": 2118,
+          "kpi": {
+            "explainability_trust_score": 0.98
+          }
+        },
+        {
+          "id": "speech-text",
+          "deliver_by": 2118,
+          "kpi": {
+            "latency_p95_ms": 150
+          }
+        },
+        {
+          "id": "embeddings",
+          "deliver_by": 2118,
+          "kpi": {
+            "schema_fusion_success_pct": 0.99
+          }
+        },
+        {
+          "id": "fine-tuning",
+          "deliver_by": 2118,
+          "kpi": {
+            "proof_verification_rate": 1
+          }
+        },
+        {
+          "id": "evals",
+          "deliver_by": 2118,
+          "kpi": {
+            "false_positive_rate": 0.01
+          }
+        },
+        {
+          "id": "data-fabric-ontology",
+          "deliver_by": 2118,
+          "kpi": {
+            "pii_purpose_binding": 1
+          }
+        },
+        {
+          "id": "lineage-governance",
+          "deliver_by": 2118,
+          "kpi": {
+            "lineage_coverage_pct": 1
+          }
+        },
+        {
+          "id": "event-streaming",
+          "deliver_by": 2118,
+          "kpi": {
+            "ingest_throughput_gbps": 100
+          }
+        },
+        {
+          "id": "decision-simulation",
+          "deliver_by": 2118,
+          "kpi": {
+            "what_if_scenario_depth": 5
+          }
+        },
+        {
+          "id": "sensor-fusion",
+          "deliver_by": 2118,
+          "kpi": {
+            "kill_chain_latency_ms": 200,
+            "sensor_to_shooter_traceability": 1
+          }
+        },
+        {
+          "id": "c2-ops",
+          "deliver_by": 2118,
+          "kpi": {
+            "c2_resilience_score": 0.999
+          }
+        },
+        {
+          "id": "edge-autonomy",
+          "deliver_by": 2118,
+          "kpi": {
+            "edge_offgrid_operability_pct": 0.99
+          }
+        },
+        {
+          "id": "sdk-python",
+          "deliver_by": 2118,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-go",
+          "deliver_by": 2118,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "sdk-dotnet",
+          "deliver_by": 2118,
+          "kpi": {
+            "sdk_coverage_score": 1
+          }
+        },
+        {
+          "id": "docs-portal",
+          "deliver_by": 2118,
+          "kpi": {
+            "doc_task_success_pct": 0.98,
+            "integration_time_days": 2
+          }
+        }
+      ],
+      "kpis": [
+        {
+          "name": "proof_verification_rate",
+          "target": 1
+        },
+        {
+          "name": "lineage_coverage_pct",
+          "target": 1
+        },
+        {
+          "name": "latency_p95_ms",
+          "target": 30
+        },
+        {
+          "name": "c2_resilience_score",
+          "target": 0.999
+        }
+      ]
+    }
+  ]
+}

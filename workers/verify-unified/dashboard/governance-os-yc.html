@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Governance OS – YC Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./dashboard.css" />
+  </head>
+  <body class="page">
+    <header class="header">
+      <div class="header-main">
+        <h1>Governance OS – YC Demo</h1>
+        <div class="header-meta">
+          <span class="badge badge-system">system: codex · oceanos · govos</span>
+          <span class="badge badge-domain">domain: governance-os</span>
+        </div>
+      </div>
+      <div class="header-status">
+        <span class="chip chip-ok" id="vu-health-chip">Status: Checking…</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel panel-wide">
+        <h2>Snapshot – Codex, OceanOS, GovOS on one screen</h2>
+        <p id="snapshot-line">
+          Loading latest Codex corridor snapshot…
+        </p>
+        <p class="hint">
+          This view is optimised for a 60-second YC demo: Codex conflict corridors at the top,
+          with OceanOS, GovOS and Verify Unified below.
+        </p>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="nav-grid">
+
+          <!-- Codex card -->
+          <article class="nav-card nav-card-accent" id="card-codex">
+            <h3>Codex – Geo Conflict v1 corridors</h3>
+            <p id="codex-main">
+              Loading corridor state…
+            </p>
+            <p id="codex-actions" class="hint">
+              Actions breakdown loading…
+            </p>
+            <p id="codex-proof" class="hint">
+              Proof metadata loading…
+            </p>
+            <p class="hint">
+              Pipeline: <code>signals → calibrated risk → corridor actions → ledger snapshot → signed proof</code>.
+            </p>
+          </article>
+
+          <!-- OceanOS card -->
+          <article class="nav-card" id="card-oceanos">
+            <h3>OceanOS – Climate &amp; ocean divergence</h3>
+            <p>
+              OceanOS runs the same pattern on climate and oceans. ENSO and reef stress signals are
+              turned into divergence proofs and live dashboards.
+            </p>
+            <ul class="hint-list">
+              <li>ENSO &amp; reef divergence proof pipelines (daily).</li>
+              <li>Supabase-backed signal logs and partner consoles.</li>
+              <li>Same canonical JSON + hash + signature pattern as Codex.</li>
+            </ul>
+            <p class="hint">
+              This YC demo focuses on Codex corridors, but OceanOS already runs on the same proof
+              engine and dashboard stack.
+            </p>
+          </article>
+
+          <!-- GovOS card -->
+          <article class="nav-card" id="card-govos">
+            <h3>GovOS – Governance &amp; contracts</h3>
+            <p>
+              GovOS is the governance layer. It turns model decisions into statements of work,
+              payment flows, and policy artefacts.
+            </p>
+            <ul class="hint-list">
+              <li>Statement-of-work generation and AISDR-AUTH flows.</li>
+              <li>Stripe-backed payment &amp; confirmation workers.</li>
+              <li>Designed to share proofs with Codex and OceanOS.</li>
+            </ul>
+            <p class="hint">
+              Together with Codex and OceanOS, GovOS forms a governance OS spanning forecasts,
+              the physical world, and contractual execution.
+            </p>
+          </article>
+
+          <!-- Verify Unified card -->
+          <article class="nav-card" id="card-vu-health">
+            <h3>Verify Unified – Proof worker health</h3>
+            <p id="vu-health-summary">
+              Checking /health…
+            </p>
+            <p class="hint" id="vu-health-hint">
+              Health is reported by the Worker's <code>/health</code> endpoint. Every corridor snapshot
+              is verified here before surfacing to dashboards.
+            </p>
+          </article>
+
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        function safeGet(obj, path, fallback) {
+          try {
+            var parts = path.split(".");
+            var cur = obj;
+            for (var i = 0; i < parts.length; i++) {
+              if (cur == null) return fallback;
+              cur = cur[parts[i]];
+            }
+            return (cur === undefined || cur === null) ? fallback : cur;
+          } catch (e) {
+            return fallback;
+          }
+        }
+
+        function text(el, value) {
+          if (!el) return;
+          el.textContent = value;
+        }
+
+        function setHealthChip(statusText, ok) {
+          var chip = document.getElementById("vu-health-chip");
+          if (!chip) return;
+          chip.textContent = "Status: " + statusText;
+          chip.classList.remove("chip-ok", "chip-warn", "chip-bad");
+          if (ok === true) {
+            chip.classList.add("chip-ok");
+          } else if (ok === false) {
+            chip.classList.add("chip-bad");
+          } else {
+            chip.classList.add("chip-warn");
+          }
+        }
+
+        async function loadHealth() {
+          var summaryEl = document.getElementById("vu-health-summary");
+          var hintEl    = document.getElementById("vu-health-hint");
+
+          try {
+            var res = await fetch("/health", { cache: "no-store" });
+            if (!res.ok) {
+              setHealthChip("Unavailable", false);
+              text(summaryEl, "Health check failed with HTTP " + res.status + ".");
+              return;
+            }
+            var data = await res.json();
+            var ok   = !!data.ok;
+
+            setHealthChip(ok ? "Online" : "Degraded", ok);
+
+            var ts   = safeGet(data, "ts", null) || safeGet(data, "timestamp", null) || "";
+            var meta = [];
+            if (ok) meta.push("verification pipeline online");
+            if (ts) meta.push("timestamp: " + ts);
+
+            if (meta.length === 0) {
+              text(summaryEl, "Health endpoint responded successfully.");
+            } else {
+              text(summaryEl, meta.join(" · "));
+            }
+          } catch (e) {
+            setHealthChip("Error", false);
+            text(summaryEl, "Health check error: " + e.message);
+            if (hintEl) {
+              hintEl.textContent = "Check Worker logs and /health implementation.";
+            }
+          }
+        }
+
+        async function loadCodexStatus() {
+          var snapshotEl = document.getElementById("snapshot-line");
+          var mainEl     = document.getElementById("codex-main");
+          var actionsEl  = document.getElementById("codex-actions");
+          var proofEl    = document.getElementById("codex-proof");
+
+          try {
+            var res = await fetch("/status/geo/conflict/v1/corridor_state.latest.json", { cache: "no-store" });
+            if (!res.ok) {
+              text(snapshotEl, "No Codex corridor status manifest found (HTTP " + res.status + ").");
+              text(mainEl, "Run the geo-conflict-v1 pilot cycle to generate status + proof.");
+              text(actionsEl, "");
+              text(proofEl, "");
+              return;
+            }
+
+            var status = await res.json();
+
+            var asOf    = safeGet(status, "as_of", "unknown");
+            var version = safeGet(status, "version", "v1");
+            var total   = safeGet(status, "total_corridors", 0);
+
+            var counts  = status.counts || {};
+            var alert   = counts.alert   || 0;
+            var hedge   = counts.hedge   || 0;
+            var reroute = counts.reroute || 0;
+            var none    = counts.none    || 0;
+
+            text(
+              snapshotEl,
+              "Codex Geo Conflict v1 corridor snapshot as of " +
+                asOf +
+                " (version " +
+                version +
+                ") – " +
+                total +
+                " corridor(s)."
+            );
+
+            text(
+              mainEl,
+              "Codex tracks conflict-exposed trade and logistics corridors and converts 12-month conflict risk into concrete actions per corridor."
+            );
+
+            text(
+              actionsEl,
+              "Current action mix – alert=" +
+                alert +
+                ", hedge=" +
+                hedge +
+                ", reroute=" +
+                reroute +
+                ", monitor-only=" +
+                none +
+                "."
+            );
+
+            var pkShort   = safeGet(status, "proof.public_key_short", "—");
+            var hashShort = safeGet(status, "proof.hash_short", "—");
+            var ledgerRef = safeGet(status, "ledger_ref", null);
+
+            var proofText = "State anchored in proof " + pkShort + " | " + hashShort + ".";
+            if (ledgerRef) {
+              proofText += " Ledger ref: " + ledgerRef + ".";
+            }
+            text(proofEl, proofText);
+          } catch (e) {
+            text(snapshotEl, "Error loading Codex corridor status: " + e.message);
+            text(mainEl, "Ensure status manifests are generated and synced into dashboard assets.");
+            text(actionsEl, "");
+            text(proofEl, "");
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          loadCodexStatus();
+          loadHealth();
+        });
+      })();
+    </script>
+  </body>
+</html>

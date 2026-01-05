@@ -1,0 +1,8 @@
+name = "verify-unified"
+main = "src/index.mjs"
+compatibility_date = "2025-09-27"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+assets = { binding = "ASSETS", directory = "./dashboard" }
+[vars]
+LOGPUSH_ENABLED = true

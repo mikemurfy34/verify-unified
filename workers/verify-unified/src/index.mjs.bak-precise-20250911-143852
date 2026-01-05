@@ -1,0 +1,169 @@
+import nacl from "tweetnacl";
+
+/* ---------- utilities ---------- */
+
+function isPojo(x){ return x && typeof x === "object" && !Array.isArray(x); }
+function canonicalize(v) {
+  if (v === null) return "null";
+  const t = typeof v;
+  if (t === "number") { if (!Number.isFinite(v)) throw new Error("non-finite"); return JSON.stringify(v); }
+  if (t === "boolean") return v ? "true" : "false";
+  if (t === "string") return JSON.stringify(v);
+  if (Array.isArray(v)) return "[" + v.map(canonicalize).join(",") + "]";
+  if (isPojo(v)) {
+    const keys = Object.keys(v).sort();
+    return "{" + keys.map(k => JSON.stringify(k) + ":" + canonicalize(v[k])).join(",") + "}";
+  }
+  throw new Error("unsupported type");
+}
+
+function normB64(s){
+  s = String(s).replace(/-/g,"+").replace(/_/g,"/");
+  const pad = s.length % 4; if (pad) s += "=".repeat(4 - pad);
+  return s;
+}
+
+function u8FromB64(s){
+  const bin = atob(normB64(s));
+  const out = new Uint8Array(bin.length);
+  for (let i=0;i<bin.length;i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+function b64FromBytes(bytes){
+  let s = ""; for (let i=0;i<bytes.length;i++) s += String.fromCharCode(bytes[i]);
+  return btoa(s);
+}
+
+async function sha256Bytes(str){
+  const data = new TextEncoder().encode(str);
+  const digest = await crypto.subtle.digest("SHA-256", data);
+  return new Uint8Array(digest);
+}
+
+function json(obj, status=200, extraHeaders={}){
+  return new Response(JSON.stringify(obj, null, 2), {
+    status,
+    headers: { "content-type":"application/json; charset=utf-8", ...extraHeaders }
+  });
+}
+
+function withCors(resp){
+  const h = new Headers(resp.headers ?? {});
+  if (!h.has("access-control-allow-origin")) {
+    h.set("access-control-allow-origin","*");
+    h.set("access-control-allow-methods","GET, POST, OPTIONS");
+    h.set("access-control-allow-headers","content-type, x-api-key");
+  }
+  return new Response(resp.body, { status: resp.status ?? 200, headers: h });
+}
+
+/* ---------- minimal schema check (no codegen) ---------- */
+
+function validateUnifiedShape(data){
+  const errors=[];
+  if (!data || typeof data!=="object" || Array.isArray(data)) {
+    errors.push({instancePath:"", message:"must be object"});
+    return {ok:false, errors};
+  }
+  for (const k of ["meta","refs","sig"]) if (!(k in data))
+    errors.push({instancePath:"", message:`must have required property '${k}'`});
+  if ("meta" in data && (typeof data.meta!=="object" || Array.isArray(data.meta)))
+    errors.push({instancePath:"/meta", message:"must be object"});
+  if ("refs" in data && !Array.isArray(data.refs))
+    errors.push({instancePath:"/refs", message:"must be array"});
+  if ("sig" in data && (typeof data.sig!=="object" || Array.isArray(data.sig)))
+    errors.push({instancePath:"/sig", message:"must be object"});
+  for (const k of Object.keys(data)) if (!["meta","refs","sig"].includes(k))
+    errors.push({instancePath:"", message:"must NOT have additional properties", additionalProperty:k});
+  return {ok: errors.length===0, errors};
+}
+function makeUnifiedValidator(){ const fn = (d)=>{ const r=validateUnifiedShape(d); fn.errors=r.errors; return r.ok; }; return fn; }
+const validateUnified = makeUnifiedValidator();
+
+/* ---------- /verify ---------- */
+
+async function handleVerify(request){
+  let body;
+  try { body = await request.json(); }
+  catch { return withCors(json({ ok:false, error:"invalid-json" }, 400)); }
+
+  if (!validateUnified(body)) {
+    return withCors(json({ ok:false, error:"schema", details: validateUnified.errors }, 422));
+  }
+
+  const { sig } = body;
+  if (!sig || sig.alg !== "Ed25519-SHA256-RFC8785") {
+    return withCors(json({ ok:false, error:"unsupported-alg" }, 400));
+  }
+
+  try {
+    const covered = { meta: body.meta, refs: body.refs };
+    const canon = canonicalize(covered);
+    const digest = await sha256Bytes(canon);
+
+    if (typeof sig.hash === "string") {
+      const want = normB64(sig.hash);
+      const got  = normB64(b64FromBytes(digest));
+      if (want !== got) return withCors(json({ ok:false, error:"hash-mismatch" }, 400));
+    }
+
+    const pub = u8FromB64(sig.pubkey);
+    const signature = u8FromB64(sig.signature);
+    if (pub.length !== 32 || signature.length !== 64) {
+      return withCors(json({ ok:false, error:"bad-key-or-signature-length" }, 400));
+    }
+
+    const ok = nacl.sign.detached.verify(digest, signature, pub);
+    return withCors(json({ ok, alg: sig.alg }));
+  } catch (e) {
+    return withCors(json({ ok:false, error:String(e?.message ?? e) }, 500));
+  }
+}
+
+/* ---------- router with timing + request-id ---------- */
+
+export default {
+  async fetch(request, env, ctx){
+    const start = performance.now();
+    const reqId = crypto.randomUUID();
+    const url = new URL(request.url);
+    let resp;
+
+    try {
+      if (request.method === "OPTIONS") {
+        resp = new Response("", { status: 204 });
+      } else if (url.pathname === "/health") {
+        resp = json({ ok: true, ts: new Date().toISOString() });
+      } else if (url.pathname === "/verify" && request.method === "POST") {
+        resp = await handleVerify(request);
+      } else {
+        resp = json({ ok:false, error:"not-found" }, 404);
+      }
+    } catch (e) {
+      resp = json({ ok:false, route:"*", error:String(e?.message ?? e), stack:e?.stack }, 500);
+    }
+
+    // Standardize CORS + add request metadata
+    resp = withCors(resp);
+    const dur = Math.max(0, performance.now() - start);
+    const h = new Headers(resp.headers ?? {});
+    h.set("x-request-id", reqId);
+    h.set("server-timing", `total;dur=${dur.toFixed(1)}`);
+    const finalResp = new Response(resp.body, { status: resp.status ?? 200, headers: h });
+
+    // Structured access log for wrangler tail --format json
+    try {
+      console.log(JSON.stringify({
+        evt: "access",
+        reqId,
+        method: request.method,
+        path: url.pathname,
+        status: finalResp.status,
+        ms: dur
+      }));
+    } catch {}
+
+    return finalResp;
+  }
+};

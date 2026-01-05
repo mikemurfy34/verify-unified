@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Unified Operator Portal – Sovereign Intelligence Pilot</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="./dashboard.css" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-card: #0b1020;
+      --bg-card-alt: #101629;
+      --border-subtle: rgba(255,255,255,0.06);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.12);
+      --accent-strong: rgba(56,189,248,0.25);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --danger: #f97373;
+      --ok: #4ade80;
+      --warn: #facc15;
+      --shadow-soft: 0 18px 45px rgba(15,23,42,0.85);
+      --radius-xl: 18px;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 40%, #000000 100%);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+    }
+    .portal-root {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-pill {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15,23,42,0.85);
+      color: var(--text-soft);
+    }
+    .brand-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      max-width: 520px;
+    }
+    .top-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .top-link {
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.3);
+      background: rgba(15,23,42,0.9);
+      color: var(--text-main);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .top-link span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .status-chip {
+      font-size: 0.76rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.35);
+      background: rgba(15,23,42,0.95);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-soft);
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+    }
+    .status-dot.ok { background: var(--ok); }
+    .status-dot.warn { background: var(--warn); }
+    .status-dot.danger { background: var(--danger); }
+    .status-dot.neutral { background: var(--accent); }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 880px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .tile {
+      position: relative;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.12), rgba(15,23,42,0.95));
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tile:nth-child(even) {
+      background: radial-gradient(circle at top right, var(--accent-soft), rgba(15,23,42,0.98));
+    }
+    .tile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .tile-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .tile-title {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .tile-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+    }
+    .tile-meta {
+      font-size: 0.74rem;
+      text-align: right;
+      color: var(--text-soft);
+      opacity: 0.85;
+    }
+    .tile-body {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .chip {
+      font-size: 0.72rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.9);
+      color: var(--text-soft);
+    }
+    .chip.accent {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--text-main);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .btn {
+      font-size: 0.78rem;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.9);
+      color: var(--text-main);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .btn.primary {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--accent-strong), rgba(15,23,42,0.98));
+    }
+    .btn span.arrow {
+      font-size: 0.78rem;
+    }
+    footer {
+      margin-top: 26px;
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      border-top: 1px solid rgba(148,163,184,0.25);
+      padding-top: 14px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.78rem;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="portal-root">
+    <header>
+      <div class="brand-block">
+        <div class="brand-title">
+          Sovereign Intelligence
+          <span class="brand-pill">Pilot v1 · Operator Portal</span>
+        </div>
+        <div class="brand-subtitle">
+          One console for Codex, OceanOS, GovOS, and the verification layer – built for sovereign, governance-grade intelligence.
+        </div>
+        <div class="top-links">
+          <a class="top-link" href="https://github.com/mikemurfy34/codex-v5/tree/main/docs/pilot" target="_blank" rel="noreferrer">
+            <span class="dot"></span>
+            Pilot docs
+          </a>
+          <a class="top-link" href="./overview.html">
+            <span class="dot"></span>
+            Proof & alignment overview
+          </a>
+        </div>
+      </div>
+      <div class="status-row">
+        <div class="status-chip">
+          <span class="status-dot ok"></span>
+          Proof verify CI · green
+        </div>
+        <div class="status-chip">
+          <span class="status-dot.neutral status-dot"></span>
+          Pilot mode · read-mostly
+        </div>
+        <div class="status-chip">
+          <span class="status-dot warn"></span>
+          Production hardening · in progress
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid" aria-label="Pilot tiles">
+        <!-- Geopolitical Risk Board -->
+        <article class="tile" id="tile-geo">
+          <div class="tile-header">
+            <div class="tile-title-block">
+              <div class="tile-title">Geopolitical Risk Board</div>
+              <div class="tile-tag">Codex · Geo / Conflict v1</div>
+            </div>
+            <div class="tile-meta">
+              12-month conflict & instability<br />
+              alert · hedge · reroute
+            </div>
+          </div>
+          <div class="tile-body">
+            Identify corridors and countries at risk over the next 12 months, convert calibrated probabilities into
+            clear **alert / hedge / reroute** actions, and link every recommendation to a proof.
+            <div class="chip-row">
+              <span class="chip accent">Codex conflict_12mo</span>
+              <span class="chip">Actions CSV</span>
+              <span class="chip">Isotonic calibrated</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="./geo-conflict.html">
+                Open Geopolitical Risk Board
+                <span class="arrow">↗</span>
+              </a>
+              <a class="btn" href="./proof.html">
+                View geo proofs
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ocean & Climate Divergence -->
+        <article class="tile" id="tile-ocean">
+          <div class="tile-header">
+            <div class="tile-title-block">
+              <div class="tile-title">Ocean & Climate Divergence</div>
+              <div class="tile-tag">OceanOS · ENSO / Reef</div>
+            </div>
+            <div class="tile-meta">
+              ENSO indices · reefs ·<br />
+              maritime corridors
+            </div>
+          </div>
+          <div class="tile-body">
+            See where oceans and climate are diverging from expected behaviour, highlighting high-risk regions for
+            fisheries, shipping, coastal communities, and humanitarian planning.
+            <div class="chip-row">
+              <span class="chip accent">Divergence labels</span>
+              <span class="chip">ENSO / Nino3.4</span>
+              <span class="chip">Reef stability</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="./ocean-divergence.html">
+                Open Divergence View
+                <span class="arrow">↗</span>
+              </a>
+              <a class="btn" href="./govos-sow.html#mitigation-brief">
+                Export mitigation brief
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Policy & SoW Console -->
+        <article class="tile" id="tile-policy">
+          <div class="tile-header">
+            <div class="tile-title-block">
+              <div class="tile-title">Policy & SoW Console</div>
+              <div class="tile-tag">GovOS · SoW / Policy</div>
+            </div>
+            <div class="tile-meta">
+              From signals to<br />
+              SoWs & directives
+            </div>
+          </div>
+          <div class="tile-body">
+            Turn intelligence signals into draft Statements of Work, policy options, and program briefs that can be
+            reviewed, amended, and authorised through existing governance channels.
+            <div class="chip-row">
+              <span class="chip accent">SoW drafts</span>
+              <span class="chip">Policy options</span>
+              <span class="chip">Governance docs</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="./govos-sow.html">
+                Open SoW Console
+                <span class="arrow">↗</span>
+              </a>
+              <a class="btn" href="./govos-sow.html#new-sow">
+                Generate new SoW
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Proof & Alignment Monitor -->
+        <article class="tile" id="tile-proof">
+          <div class="tile-header">
+            <div class="tile-title-block">
+              <div class="tile-title">Proof & Alignment Monitor</div>
+              <div class="tile-tag">Verify-Unified · Alignment UI</div>
+            </div>
+            <div class="tile-meta">
+              Cryptographic spine ·<br />
+              CI vectors · health
+            </div>
+          </div>
+          <div class="tile-body">
+            Inspect the cryptographic trust fabric: unified proofs, signature verification, alignment status, and CI
+            health – so leaders can trust that every recommendation is backed by verifiable evidence.
+            <div class="chip-row">
+              <span class="chip accent">/verify endpoint</span>
+              <span class="chip">Ed25519 · SHA-256 · RFC8785</span>
+              <span class="chip">Nightly proofs</span>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="./overview.html">
+                Open Proof & Alignment Monitor
+                <span class="arrow">↗</span>
+              </a>
+              <a class="btn" href="./playground.html">
+                Run test vector
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        Sovereign Intelligence Pilot v1 · Unified Operator Portal (static prototype).<br />
+        Wire underlying links to your preferred dashboards and environments.
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/mikemurfy34/codex-v5/tree/main/docs/pilot" target="_blank" rel="noreferrer">
+          Pilot docs
+        </a>
+        <a href="https://github.com/mikemurfy34/codex-v5/blob/main/docs/pilot/PilotProductMatrix.md" target="_blank" rel="noreferrer">
+          Product matrix
+        </a>
+        <a href="https://github.com/mikemurfy34/codex-v5/blob/main/docs/pilot/SecurityAndComplianceAnnex.md" target="_blank" rel="noreferrer">
+          Security & compliance
+        </a>
+        <a href="https://github.com/mikemurfy34/codex-v5/blob/main/docs/pilot/OpsAndMonitoring.md" target="_blank" rel="noreferrer">
+          Ops & monitoring
+        </a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

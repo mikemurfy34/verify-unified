@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "system": "codex",
+    "domain": "geo_conflict_v1",
+    "kind": "corridor_state",
+    "as_of": "2025-12-01T22:20:20.737Z",
+    "version": "v1.1"
+  },
+  "refs": [
+    {
+      "path": "ledger/govos/geo_conflict_v1/corridor_state.2025-11-30.json",
+      "hash": "+N4w9Me9UF4nR7e5TwjfI8tEPlsEuvb1P85+EduzpeE="
+    }
+  ],
+  "sig": {
+    "alg": "Ed25519-SHA256-RFC8785",
+    "publicKey": "LJIU6NNbo6M9DZv0h6bXVBxlRrKie+urab+GAQ325TE=",
+    "hash": "BykF2yNzcN9m8ISdAljlnUZrieRg/q+X6jhrvM+qMMU=",
+    "sig": "Hk54Ii6ZkTQcslzscyxdzXtdgMihQJaDxN34LtqYC2/Z4ryBgHOh/tTwowTWvGlsWnSu8LKDnp3H7dKyYV78Aw=="
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "system": "codex",
+  "domain": "geo_conflict_v1",
+  "as_of": "2025-11-30T09:27:14.4656819+11:00",
+  "corridors": [
+    {
+      "iso3": "ISR",
+      "as_of": "11/29/2025 22:26:12",
+      "band": {
+        "7d": "alert",
+        "30d": "alert",
+        "90d": "alert"
+      },
+      "p_event": {
+        "7d": null,
+        "30d": null,
+        "90d": null
+      },
+      "policy_flags": {
+        "has_calibrated_forecast": false,
+        "alert_7d_high": false,
+        "alert_30d_high": false,
+        "alert_90d_high": false,
+        "watch_only": true
+      },
+      "primary_action": "none",
+      "archetype": "other_conflict",
+      "entropy_state": "normal"
+    },
+    {
+      "iso3": "UKR",
+      "as_of": "11/29/2025 22:26:48",
+      "band": {
+        "7d": "alert",
+        "30d": "alert",
+        "90d": "alert"
+      },
+      "p_event": {
+        "7d": 0.065315,
+        "30d": 0.251348,
+        "90d": 0.580395
+      },
+      "policy_flags": {
+        "has_calibrated_forecast": true,
+        "alert_7d_high": true,
+        "alert_30d_high": true,
+        "alert_90d_high": true,
+        "watch_only": false
+      },
+      "primary_action": "reroute",
+      "archetype": "chronic_conflict",
+      "entropy_state": "normal"
+    }
+  ],
+  "inputs": {
+    "osint_index_ref": "feeds/osint/geo_conflict_v1/osint.index.by_iso3.json",
+    "actions_ref": "geo/conflict/v1/actions/conflict_12mo.actions.csv",
+    "forecast_ref": "geo/conflict/v1/conflict_12mo.forecast.v3.calibrated.json"
+  }
+}

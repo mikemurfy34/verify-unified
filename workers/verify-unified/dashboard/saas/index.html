@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"/>
+<title>SAAS Capabilities & Roadmap</title>
+<style>body{font:14px system-ui;margin:24px;max-width:1200px} code{background:#f5f5f5;padding:2px 6px;border-radius:6px}</style>
+<h1>Capabilities & 100-Year Roadmap</h1>
+<p>Signed artifacts are verified via <code>/verify</code>.</p>
+<section id="caps"><h2>Capabilities</h2><pre id="cap"></pre></section>
+<section id="road"><h2>Roadmap</h2><pre id="rm"></pre></section>
+<script>
+Promise.all([
+  fetch('./capabilities/capabilityCatalog.public.json').then(r=>r.json()),
+  fetch('./roadmap/roadmap.100y.public.json').then(r=>r.json()),
+]).then(([cap,rm])=>{
+  document.getElementById('cap').textContent = JSON.stringify({count:cap.capability_count || (cap.capabilities||[]).length, sample:(cap.capabilities||[]).slice(0,8)}, null, 2);
+  document.getElementById('rm').textContent  = JSON.stringify({start:rm.start_year, horizon:rm.horizon_years, epochs:rm.epochs.slice(0,3)}, null, 2);
+});
+</script>
