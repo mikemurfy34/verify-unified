@@ -1,0 +1,25 @@
+name: hygiene
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hygiene:
+    name: hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail if backup/junk files are tracked
+        run: |
+          bad=$(git ls-files | grep -E -i '\.bak(\.|$)|\.old$|\.tmp$|\.swp$|~$' || true)
+          if [ -n "$bad" ]; then
+            echo "ERROR: Tracked junk files detected:"
+            echo "$bad"
+            exit 1
+          fi
